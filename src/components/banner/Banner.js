@@ -1,59 +1,60 @@
-import React, { useState, useEffect, createRef } from "react";
-
-import styled, { keyframes } from "styled-components";
-
-const rotate = keyframes`
-0% {
-  transform: translate3d(0%, 0, 0);
-}
-
-100% {
-  transform: translate3d(-100%, 0, 0);
-}
-`;
-
-const reverseRotate = keyframes`
-0% {
-  transform: translate3d(-100%, 0, 0);
-}
-
-100% {
-  transform: translate3d(0%, 0, 0);
-}
-`;
-
-const BannerMain = styled.section`
-  height: 100vh;
-  width: 100%;
-  margin-bottom: 296px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Canvas = styled.canvas`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: block;
-  z-index: 2;
-`;
-
-const TextAnimation = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-`;
+import React, { useEffect, createRef, useContext } from "react";
+import useWindowSize from "../../hooks/useWindowSize";
+import { AppContext } from "../../store/store";
+import {
+  BannerContainer,
+  TextAnimation,
+  LettersSpan,
+  BannerMain,
+  BrandSpan,
+  Canvas,
+  ScrollDown
+} from "../styles/banner.styled";
 
 const Banner = () => {
+  const { state } = useContext(AppContext);
+
   const ref = createRef(null);
+  const size = useWindowSize();
 
   useEffect(() => {
-    const canvas = ref.current;
+    let renderingElement = ref.current;
+    let drawingCtx = renderingElement.getContext("2d");
+    let renderingCtx = renderingElement.getContext("2d");
+    let mouse = { x: 0, y: 0 };
 
-    console.log(canvas);
-  }, [ref]);
+    renderingCtx.globalCompositeOperation = "source-over";
+    renderingCtx.fillStyle = state.switchTheme ? "#41443E" : "#E2DACF";
+    renderingCtx.fillRect(0, 0, size.width, size.height);
+
+    renderingElement.addEventListener("mouseover", (ev) => {
+      mouse.x = ev.pageX - renderingElement.offsetLeft;
+      mouse.y = ev.pageY - renderingElement.offsetTop;
+    });
+
+    renderingElement.addEventListener("mousemove", (e) => {
+      drawingCtx.globalCompositeOperation = "destination-out";
+      let currentX = e.pageX - renderingElement.offsetLeft;
+      let currentY = e.pageY - renderingElement.offsetTop;
+
+      drawingCtx.lineJoin = "round";
+      drawingCtx.beginPath();
+      drawingCtx.moveTo(mouse.x, mouse.y);
+      drawingCtx.lineTo(currentX, currentY);
+      drawingCtx.closePath();
+      drawingCtx.lineWidth = 150;
+      drawingCtx.stroke();
+
+      mouse = { x: currentX, y: currentY };
+    });
+
+    if (state.switchTheme) {
+      renderingCtx.clearRect(0, 0, size.width, size.height);
+      renderingCtx.rect(0, 0, size.width, size.height);
+      renderingCtx.fillStyle = state.switchTheme ? "#41443E" : "#E2DACF";
+      renderingCtx.fill();
+    }
+  }, [size, ref, state]);
 
   return (
     <BannerMain>
@@ -63,24 +64,13 @@ const Banner = () => {
       <TextAnimation>
         <BannerRowCenter title="brand" />
       </TextAnimation>
-      <Canvas ref={ref} />
+      <Canvas width={size.width} height={size.height} ref={ref} />
+      <ScrollDown>MORE</ScrollDown>
     </BannerMain>
   );
 };
 
 export default Banner;
-
-const AnimatedLetters = ({ title }) => {
-  const Header = title === "brand" ? BrandSpan : LettersSpan;
-
-  return (
-    <Header>
-      {[...title].map((letter, i) => (
-        <p key={i}>{letter}</p>
-      ))}
-    </Header>
-  );
-};
 
 const BannerRowCenter = ({ title }) => {
   return (
@@ -93,39 +83,14 @@ const BannerRowCenter = ({ title }) => {
   );
 };
 
-const LetterContainer = styled.span`
-  width: auto;
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10vw;
+const AnimatedLetters = ({ title }) => {
+  const Header = title === "brand" ? BrandSpan : LettersSpan;
 
-  p {
-    font-size: min(28vmin, 28vmin);
-    font-weight: bold;
-    color: ${(props) => props.theme.color} !important;
-
-    -webkit-transition: color 500ms linear !important;
-    -ms-transition: color 500ms linear !important;
-    transition: color 500ms linear !important;
-  }
-`;
-
-const BrandSpan = styled(LetterContainer)`
-  animation: ${reverseRotate} 10s linear infinite;
-`;
-
-const LettersSpan = styled(LetterContainer)`
-  animation: ${rotate} 10s linear infinite;
-`;
-
-const BannerContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  position: relative;
-  display: flex;
-`;
+  return (
+    <Header>
+      {[...title].map((letter, i) => (
+        <p key={i}>{letter}</p>
+      ))}
+    </Header>
+  );
+};

@@ -15,13 +15,15 @@ import { AppContext } from "../store/store";
 const darkTheme = {
   background: "#41443E",
   color: "#fff",
-  dot: "#959C8E"
+  dot: "#959C8E",
+  change: "#E2DACF"
 };
 
 const lightTheme = {
   background: "#E2DACF",
-  color: "#333",
-  dot: "#959C8E"
+  color: "#fff",
+  dot: "#959C8E",
+  change: "#41443E"
 };
 
 // markup

@@ -72,22 +72,22 @@ const Hamburger = styled.div`
 `;
 
 const NavBar = styled.nav`
-  height: 0px;
+  height: 0;
   width: 100%;
   position: absolute;
   top: 72px;
   right: 0;
   left: 0;
-  z-index: 99;
+  z-index: 1000;
 `;
 
 const Container = styled.section`
   flex-grow: 1;
+  height: 0;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
   width: 100%;
-  height: 100vh;
 
   @media (min-width: 1024px) {
     max-width: 960px;
@@ -102,6 +102,7 @@ const Container = styled.section`
 
 const Flex = styled.div`
   display: flex;
+  height: 0;
   justify-content: space-between;
 `;
 
