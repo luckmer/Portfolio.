@@ -36,7 +36,15 @@ const Nav = () => {
         <Flex>
           <Logo>
             <Link to="/">PI</Link>
-            <span onClick={toggleChange}></span>
+            <span
+              onClick={toggleChange}
+              role="button"
+              styling="link"
+              tabIndex={0}
+              onKeyDown={toggleChange}
+            >
+              .
+            </span>
             <Link to="/">TR</Link>
           </Logo>
           <Hamburger>

@@ -33,7 +33,7 @@ export const H2 = styled.h2`
   margin: auto;
   color: pink;
   font-weight: bolder;
-  font-family: "Raleway", sans-serif;
+  font-family: "Bakbak One", cursive;
 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -109,4 +109,23 @@ export const MainDivHeader = styled.div`
   @media screen and (max-width: 730px) {
     font-size: calc((24 / 31) * 1rem);
   }
+`;
+
+export const Rotate = styled.img`
+  position: fixed;
+  width: 15vmin;
+  stroke-dasharray: 1300;
+  stroke-dashoffset: 1300;
+  fill: transparent;
+  stroke: white;
+  cursor: pointer;
+  transition: 100ms linear all;
+  height: 15vmin;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1001;
+
+  transform: rotate(${({ rotate }) => `${rotate}deg`});
+  pointer-events: none;
+  mix-blend-mode: difference;
 `;

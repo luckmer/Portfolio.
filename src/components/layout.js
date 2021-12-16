@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 //css
 import GlobalStyle from "../styles/GlobalStyle.styled";
 import styled, { ThemeProvider } from "styled-components";
-
+import { Helmet } from "react-helmet";
 //components
 import Nav from "./nav/Nav";
 
@@ -11,6 +11,7 @@ import Nav from "./nav/Nav";
 import { AppContext } from "../store/store";
 
 //theme
+
 const darkTheme = {
   background: "#41443E",
   color: "#fff",
@@ -37,6 +38,12 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
+      <Helmet>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+        </style>
+      </Helmet>
       <GlobalStyle />
       <Nav />
       <Main>{children}</Main>

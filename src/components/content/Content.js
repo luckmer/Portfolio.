@@ -1,7 +1,15 @@
 import React from "react";
+
+//hooks
+import UseWindowScrollHook from "../../hooks/useWindowScroll";
 import BannerRowCenter from "../helper/BannerGenerator";
-import { TextAnimation } from "../styles/banner.styled";
+
+//images
+import rotateEffect from "../../images/rotateEffect.png";
 import Arrow from "../../images/cirlce.png";
+
+//styles
+import { TextAnimation } from "../styles/banner.styled";
 import {
   Div1,
   MainDivHeader,
@@ -10,10 +18,13 @@ import {
   AnimationPanel,
   ContentContainer,
   CircleSpacer,
-  Circle
+  Circle,
+  Rotate
 } from "../styles/content.styled";
 
 const Content = () => {
+  const { scrollTop } = UseWindowScrollHook();
+
   return (
     <Div1>
       <MainDivHeader>
@@ -24,10 +35,11 @@ const Content = () => {
       <MainDivHeader>
         <h2>Hi, I'm Piotr</h2>
         <p>
-          <span> Design enthusiast</span>.<br /> I started my career in 2020
-          starting with a simple application called.
+          <span>Design enthusiast</span>
+          .<br /> I started my career in 2020 starting with a simple application
+          called.
           <br />
-          <span>TODO list</span>
+          <span>todo list</span>
         </p>
 
         <p>
@@ -49,6 +61,7 @@ const Content = () => {
         <CircleSpacer>
           <Circle src={Arrow} alt={Arrow} />
         </CircleSpacer>
+        <Rotate src={rotateEffect} alt={rotateEffect} rotate={scrollTop} />
       </ContentContainer>
     </Div1>
   );

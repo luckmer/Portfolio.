@@ -21,6 +21,11 @@ body{
   display:flex;
 }
 
+::-webkit-scrollbar {
+  width:0;
+}
+
+
 ::selection {
   color: #fff;
   background: #ede6e0;

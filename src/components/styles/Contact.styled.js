@@ -36,6 +36,12 @@ export const H3 = styled.h3`
 export const ContactPanel = styled.div`
   margin-top: calc((100 / 31) * 1rem);
   margin-bottom: calc((40 / 31) * 1rem);
+
+  a {
+    background: none;
+    list-style: none;
+    text-decoration: none;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -49,6 +55,13 @@ export const H1 = styled.h1`
 
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   color: ${(props) => props.theme.darkThemeColor};
+
+  transition: 0.5s linear all;
+  &:hover {
+    -webkit-text-fill-color: ${(props) => props.theme.darkThemeBackground};
+    -webkit-text-stroke: 1px ${(props) => props.theme.color};
+    opacity: 0.5;
+  }
 `;
 
 export const Button = styled.button`
@@ -56,5 +69,6 @@ export const Button = styled.button`
   font-size: calc((60 / 31) * 1rem);
   border: none;
   background: none;
+  cursor: pointer;
   color: ${(props) => props.theme.darkThemeColor};
 `;
