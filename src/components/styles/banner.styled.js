@@ -21,7 +21,6 @@ export const reverseRotate = keyframes`
 `;
 
 export const LetterContainer = styled.span`
-  width: auto;
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   height: 100%;
@@ -39,14 +38,29 @@ export const LetterContainer = styled.span`
     -ms-transition: color 500ms linear !important;
     transition: color 500ms linear !important;
   }
+
+  &:hover {
+    text-decoration: line-through;
+    color: lightsalmon;
+  }
 `;
 
 export const BrandSpan = styled(LetterContainer)`
-  animation: ${reverseRotate} 10s linear infinite;
+  animation: ${reverseRotate} 12s linear infinite;
 `;
 
 export const LettersSpan = styled(LetterContainer)`
-  animation: ${rotate} 10s linear infinite;
+  animation: ${rotate} 12s linear infinite;
+`;
+
+export const Speed = styled(LetterContainer)`
+  animation: ${rotate} 8s linear infinite;
+
+  p {
+    -webkit-text-fill-color: ${(props) => props.theme.darkThemeBackground};
+    -webkit-text-stroke: 1px ${(props) => props.theme.color};
+    font-size: 12vmin;
+  }
 `;
 
 export const BannerContainer = styled.div`
@@ -68,7 +82,7 @@ export const BannerMain = styled.section`
   margin-bottom: 296px;
   display: flex;
   flex-direction: column;
-  background: ${(props) => props.theme.change};
+  background: ${(props) => props.theme.background};
 `;
 
 export const Canvas = styled.canvas`

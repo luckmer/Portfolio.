@@ -2,14 +2,12 @@ import React, { useEffect, createRef, useContext } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { AppContext } from "../../store/store";
 import {
-  BannerContainer,
   TextAnimation,
-  LettersSpan,
   BannerMain,
-  BrandSpan,
   Canvas,
   ScrollDown
 } from "../styles/banner.styled";
+import BannerRowCenter from "../helper/BannerGenerator";
 
 const Banner = () => {
   const { state } = useContext(AppContext);
@@ -24,7 +22,7 @@ const Banner = () => {
     let mouse = { x: 0, y: 0 };
 
     renderingCtx.globalCompositeOperation = "source-over";
-    renderingCtx.fillStyle = state.switchTheme ? "#41443E" : "#E2DACF";
+    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#41443E";
     renderingCtx.fillRect(0, 0, size.width, size.height);
 
     renderingElement.addEventListener("mouseover", (ev) => {
@@ -51,7 +49,7 @@ const Banner = () => {
     if (state.switchTheme) {
       renderingCtx.clearRect(0, 0, size.width, size.height);
       renderingCtx.rect(0, 0, size.width, size.height);
-      renderingCtx.fillStyle = state.switchTheme ? "#41443E" : "#E2DACF";
+      renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#41443E";
       renderingCtx.fill();
     }
   }, [size, ref, state]);
@@ -62,7 +60,7 @@ const Banner = () => {
         <BannerRowCenter title="experience" />
       </TextAnimation>
       <TextAnimation>
-        <BannerRowCenter title="brand" />
+        <BannerRowCenter title="inspirations" />
       </TextAnimation>
       <Canvas width={size.width} height={size.height} ref={ref} />
       <ScrollDown>MORE</ScrollDown>
@@ -71,26 +69,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
-const BannerRowCenter = ({ title }) => {
-  return (
-    <BannerContainer>
-      <AnimatedLetters title={title} />
-      <AnimatedLetters title={title} />
-      <AnimatedLetters title={title} />
-      <AnimatedLetters title={title} />
-    </BannerContainer>
-  );
-};
-
-const AnimatedLetters = ({ title }) => {
-  const Header = title === "brand" ? BrandSpan : LettersSpan;
-
-  return (
-    <Header>
-      {[...title].map((letter, i) => (
-        <p key={i}>{letter}</p>
-      ))}
-    </Header>
-  );
-};

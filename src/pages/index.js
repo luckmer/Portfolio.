@@ -8,6 +8,8 @@ import { AppProvider } from "../store/store";
 
 //components
 import Banner from "../components/banner/Banner";
+import Content from "../components/content/Content";
+import Contact from "../components/Contact/Contact";
 
 // markup
 const IndexPage = () => {
@@ -15,6 +17,8 @@ const IndexPage = () => {
     <AppProvider>
       <Layout>
         <Banner />
+        <Content />
+        <Contact />
       </Layout>
     </AppProvider>
   );

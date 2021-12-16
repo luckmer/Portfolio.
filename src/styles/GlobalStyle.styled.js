@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 body{
-  background-color:${(props) => props.theme.background};
+  background-color:${(props) => props.theme.darkThemeBackground};
 }
 
 #gatsby-focus-wrapper{

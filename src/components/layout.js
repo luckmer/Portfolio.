@@ -11,19 +11,24 @@ import Nav from "./nav/Nav";
 import { AppContext } from "../store/store";
 
 //theme
-
 const darkTheme = {
   background: "#41443E",
   color: "#fff",
-  dot: "#959C8E",
-  change: "#E2DACF"
+  dot: "blue",
+  change: "#41443E",
+  layoutBackground: "#41443E",
+  darkThemeBackground: "#0f0f0f",
+  darkThemeColor: "#f3efee"
 };
 
 const lightTheme = {
-  background: "#E2DACF",
+  background: "#0f0f0f",
   color: "#fff",
-  dot: "#959C8E",
-  change: "#41443E"
+  dot: "red",
+  change: "#191917",
+  layoutBackground: "#1e1e1e",
+  darkThemeBackground: "#41443E",
+  darkThemeColor: "#FFF"
 };
 
 // markup
