@@ -15,7 +15,6 @@ export const Circle = styled.img`
   stroke-dashoffset: 1300;
   fill: transparent;
   stroke: white;
-  cursor: pointer;
   transition: 100ms linear all;
 
   &:hover {
@@ -118,7 +117,6 @@ export const Rotate = styled.img`
   stroke-dashoffset: 1300;
   fill: transparent;
   stroke: white;
-  cursor: pointer;
   transition: 100ms linear all;
   height: 15vmin;
   bottom: 30px;

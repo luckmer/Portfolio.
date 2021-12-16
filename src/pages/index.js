@@ -11,11 +11,15 @@ import Banner from "../components/banner/Banner";
 import Content from "../components/content/Content";
 import Contact from "../components/Contact/Contact";
 
+//cursor
+import Cursor from "../cursor/Cursor";
+
 // markup
 const IndexPage = () => {
   return (
     <AppProvider>
       <Layout>
+        <Cursor />
         <Banner />
         <Content />
         <Contact />

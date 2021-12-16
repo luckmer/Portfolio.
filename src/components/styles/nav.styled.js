@@ -9,7 +9,6 @@ export const Hamburger = styled.div`
     border: none;
     background: none;
     outline: none;
-    cursor: pointer;
 
     span {
       width: 36px;
