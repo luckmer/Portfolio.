@@ -81,7 +81,15 @@ export const MainDivHeader = styled.div`
   p {
     margin: auto;
     width: 80%;
-    font-size: 5vw;
+
+    @media screen and (max-width: 3372px) {
+      font-size: 5vw;
+    }
+
+    @media screen and (min-width: 3372px) {
+      font-size: 4.2vw;
+    }
+
     padding-bottom: 10vw;
   }
 
@@ -99,14 +107,14 @@ export const MainDivHeader = styled.div`
 
   color: ${(props) => props.theme.darkThemeColor};
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
-  margin-bottom: calc((36 / 31) * 1rem);
+  margin-bottom: calc((36 / 31) * 1vmin);
 
   @media screen and (min-width: 730px) {
-    font-size: calc((60 / 31) * 1rem);
+    font-size: calc((60 / 31) * 1vmin);
   }
 
   @media screen and (max-width: 730px) {
-    font-size: calc((24 / 31) * 1rem);
+    font-size: calc((24 / 31) * 1vmin);
   }
 `;
 

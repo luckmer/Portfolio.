@@ -99,7 +99,13 @@ const Hamburger = () => {
         <div>
           <FooterSpan>2021</FooterSpan>
         </div>
-        <div onMouseEnter={handleHoverCursor} onMouseOut={handleOutMouse}>
+        <div
+          onMouseEnter={handleHoverCursor}
+          onMouseOut={handleOutMouse}
+          role="button"
+          onBlur=""
+          tabIndex={0}
+        >
           <A href="https://github.com/luckmer">GITHUB</A>
         </div>
         <div></div>
