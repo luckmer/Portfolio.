@@ -1,18 +1,27 @@
-import React, { useEffect, createRef, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
+
+//helper
+import BannerRowCenter from "../helper/BannerGenerator";
+
+//hooks
 import useWindowSize from "../../hooks/useWindowSize";
+
+//store
 import { AppContext } from "../../store/store";
+
+//styles
 import {
   TextAnimation,
   BannerMain,
   Canvas,
   ScrollDown
 } from "../styles/banner.styled";
-import BannerRowCenter from "../helper/BannerGenerator";
 
 const Banner = () => {
-  const { state } = useContext(AppContext);
+  const { state, functions } = useContext(AppContext);
+  const { handleHoverCursor, handleOutMouse } = functions;
 
-  const ref = createRef(null);
+  const ref = useRef(null);
   const size = useWindowSize();
 
   useEffect(() => {
@@ -22,7 +31,7 @@ const Banner = () => {
     let mouse = { x: 0, y: 0 };
 
     renderingCtx.globalCompositeOperation = "source-over";
-    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#41443E";
+    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#646461";
     renderingCtx.fillRect(0, 0, size.width, size.height);
 
     renderingElement.addEventListener("mouseover", (ev) => {
@@ -49,10 +58,10 @@ const Banner = () => {
     if (state.switchTheme) {
       renderingCtx.clearRect(0, 0, size.width, size.height);
       renderingCtx.rect(0, 0, size.width, size.height);
-      renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#41443E";
+      renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#646461";
       renderingCtx.fill();
     }
-  }, [size, ref, state]);
+  }, [size.width, size.height, ref, state.switchTheme]);
 
   return (
     <BannerMain>
@@ -62,7 +71,13 @@ const Banner = () => {
       <TextAnimation>
         <BannerRowCenter title="inspirations" />
       </TextAnimation>
-      <Canvas width={size.width} height={size.height} ref={ref} />
+      <Canvas
+        width={size.width}
+        height={size.height}
+        ref={ref}
+        onMouseEnter={() => handleHoverCursor()}
+        onMouseLeave={handleOutMouse}
+      />
       <ScrollDown>MORE</ScrollDown>
     </BannerMain>
   );
