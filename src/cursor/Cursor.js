@@ -36,8 +36,8 @@ const CursorStyle = styled.div`
   color: white;
   top: 400px;
   left: 400px;
-  width: 25px;
-  height: 25px;
+  width: 2.5vmin;
+  height: 2.5vmin;
   background: #ea281e;
   border-radius: 100%;
   transform: translate(-50%, -50%);
@@ -48,9 +48,8 @@ const CursorStyle = styled.div`
   z-index: 9998;
   &.bump {
     background: transparent !important;
-    width: 55px;
-    height: 55px;
-    border: 4px solid #ea281e;
-    border: 4px solid #ea281e;
+    width: 5.7vmin;
+    height: 5.7vmin;
+    border: 0.5vmin solid #ea281e;
   }
 `;

@@ -22,6 +22,7 @@ const IndexPage = () => {
         <Cursor />
         <Banner />
         <Content />
+
         <Contact />
       </Layout>
     </AppProvider>

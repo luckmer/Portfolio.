@@ -3,13 +3,20 @@ import React, { useContext } from "react";
 //css
 import GlobalStyle from "../styles/GlobalStyle.styled";
 import styled, { ThemeProvider } from "styled-components";
+
+//helmet
 import { Helmet } from "react-helmet";
+
 //components
 import Hamburger from "./hamburger/Hamburger";
+import CirclePanel from "../cursor/CirclePanel";
 import Nav from "./nav/Nav";
 
 //store
 import { AppContext } from "../store/store";
+
+//hook
+import UseWindowScrollHook from "../hooks/useWindowScroll";
 
 //theme
 
@@ -36,6 +43,7 @@ const lightTheme = {
 // markup
 const Layout = ({ children }) => {
   const { state } = useContext(AppContext);
+  const { scrollTop } = UseWindowScrollHook();
 
   return (
     <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
@@ -48,6 +56,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Hamburger />
       <Nav />
+      <CirclePanel scrollTop={scrollTop} />
       <Main>{children}</Main>
     </ThemeProvider>
   );

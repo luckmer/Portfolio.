@@ -11,12 +11,12 @@ export const Hamburger = styled.div`
     outline: none;
 
     span {
-      width: 36px;
-      height: 6px;
+      width: 4vmin;
+      height: 0.8vmin;
       display: block;
       background-color: ${(props) => props.theme.color};
-      margin: 8px;
-      border-radius: 5px;
+      margin: 0.56vmin;
+      border-radius: 1vmin;
     }
   }
 `;
@@ -25,7 +25,7 @@ export const NavBar = styled.nav`
   height: 0;
   width: 100%;
   position: fixed;
-  top: 72px;
+  top: 7vmin;
   right: 0;
   left: 0;
   z-index: 99999;
@@ -59,24 +59,29 @@ export const Flex = styled.div`
   display: flex;
   height: 0;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Logo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   a {
-    font-size: 1.8rem;
+    font-size: 2.2vmin;
     text-decoration: none;
     font-weight: 800;
     color: ${(props) => props.theme.color};
   }
   span {
     background-color: ${(props) => props.theme.dot};
-    height: 16px;
-    width: 16px;
-    margin: 0 4px;
+    height: 2vmin;
+    width: 2vmin;
+    margin: 0 0.4vmin;
     border-radius: 100%;
     display: inline-block;
-    position: relative;
     bottom: 2px;
+    overflow: hidden;
   }
 `;

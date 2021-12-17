@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 
+//link
+import { Link } from "gatsby";
+
 //hooks
-import UseWindowScrollHook from "../../hooks/useWindowScroll";
 import BannerRowCenter from "../helper/BannerGenerator";
 
 //images
-import rotateEffect from "../../images/rotateEffect.png";
 import Arrow from "../../images/cirlce.png";
 
 //styles
@@ -22,15 +23,12 @@ import {
   AnimationPanel,
   ContentContainer,
   CircleSpacer,
-  Circle,
-  Rotate
+  Circle
 } from "../styles/content.styled";
 
 const Content = () => {
   const { functions } = useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
-
-  const { scrollTop } = UseWindowScrollHook();
 
   return (
     <Div1>
@@ -86,15 +84,16 @@ const Content = () => {
         <H2>
           <Small>( 002 )</Small>Recent Work
         </H2>
-        <CircleSpacer>
-          <Circle
-            src={Arrow}
-            alt={Arrow}
-            onMouseEnter={() => handleHoverCursor()}
-            onMouseLeave={handleOutMouse}
-          />
-        </CircleSpacer>
-        <Rotate src={rotateEffect} alt={rotateEffect} rotate={scrollTop} />
+        <Link to="/projects">
+          <CircleSpacer>
+            <Circle
+              src={Arrow}
+              alt={Arrow}
+              onMouseEnter={() => handleHoverCursor()}
+              onMouseLeave={handleOutMouse}
+            />
+          </CircleSpacer>
+        </Link>
       </ContentContainer>
     </Div1>
   );

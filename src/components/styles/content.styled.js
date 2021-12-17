@@ -119,8 +119,8 @@ export const Rotate = styled.img`
   stroke: white;
   transition: 100ms linear all;
   height: 15vmin;
-  bottom: 30px;
-  left: 30px;
+  bottom: 3.5vmin;
+  left: 3.5vmin;
   z-index: 1001;
 
   transform: rotate(${({ rotate }) => `${rotate}deg`});
