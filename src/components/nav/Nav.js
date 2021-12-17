@@ -9,7 +9,8 @@ import { AppContext } from "../../store/store";
 
 const Nav = () => {
   const [type, setType] = useState({ mode: "light" });
-  const { dispatch } = useContext(AppContext);
+  const { dispatch, functions, state } = useContext(AppContext);
+  const { handleHoverCursor, handleOutMouse } = functions;
 
   const Color = type.mode;
 
@@ -30,6 +31,13 @@ const Nav = () => {
     dispatch({ type: "DARK_THEME", payload: type.mode === "dark" });
   }, [type.mode, dispatch]);
 
+  const handleControlHamburger = () => {
+    dispatch({
+      type: "HAMBURGER_STATUS",
+      payload: !state.switchHamburgerStatus
+    });
+  };
+
   return (
     <NavBar>
       <Container>
@@ -42,13 +50,18 @@ const Nav = () => {
               styling="link"
               tabIndex={0}
               onKeyDown={toggleChange}
+              onMouseEnter={() => handleHoverCursor()}
+              onMouseLeave={handleOutMouse}
             >
               .
             </span>
             <Link to="/">TR</Link>
           </Logo>
-          <Hamburger>
-            <button>
+          <Hamburger
+            onMouseEnter={() => handleHoverCursor()}
+            onMouseLeave={handleOutMouse}
+          >
+            <button onClick={handleControlHamburger}>
               <span></span>
               <span></span>
             </button>

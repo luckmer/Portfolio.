@@ -5,6 +5,7 @@ import GlobalStyle from "../styles/GlobalStyle.styled";
 import styled, { ThemeProvider } from "styled-components";
 import { Helmet } from "react-helmet";
 //components
+import Hamburger from "./hamburger/Hamburger";
 import Nav from "./nav/Nav";
 
 //store
@@ -13,11 +14,11 @@ import { AppContext } from "../store/store";
 //theme
 
 const darkTheme = {
-  background: "#41443E",
+  background: "#646461",
   color: "#fff",
   dot: "blue",
-  change: "#41443E",
-  layoutBackground: "#41443E",
+  change: "#646461",
+  layoutBackground: "#646461",
   darkThemeBackground: "#0f0f0f",
   darkThemeColor: "#f3efee"
 };
@@ -28,7 +29,7 @@ const lightTheme = {
   dot: "red",
   change: "#191917",
   layoutBackground: "#1e1e1e",
-  darkThemeBackground: "#41443E",
+  darkThemeBackground: "#646461",
   darkThemeColor: "#FFF"
 };
 
@@ -45,6 +46,7 @@ const Layout = ({ children }) => {
         </style>
       </Helmet>
       <GlobalStyle />
+      <Hamburger />
       <Nav />
       <Main>{children}</Main>
     </ThemeProvider>

@@ -28,7 +28,7 @@ export const NavBar = styled.nav`
   top: 72px;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 99999;
   user-select: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

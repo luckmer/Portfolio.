@@ -1,37 +1,56 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { AppContext } from "../store/store";
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const { state } = useContext(AppContext);
+
+  const ref = useRef(null);
 
   useEffect(() => {
-    const setFromEvent = (e) => setPosition({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", setFromEvent);
+    const mouse = ref.current;
+
+    const setFromEvent = (e) => {
+      const { clientX, clientY } = e;
+
+      mouse.style.left = `${clientX}px`;
+      mouse.style.top = `${clientY}px`;
+    };
+
+    document.addEventListener("mousemove", setFromEvent);
 
     return () => {
-      window.removeEventListener("mousemove", setFromEvent);
+      document.removeEventListener("mousemove", setFromEvent);
     };
   }, []);
 
-  return (
-    <CursorStyle style={{ left: position.x, top: position.y }}></CursorStyle>
-  );
+  const bump = state.switchCursorBump;
+
+  return <CursorStyle ref={ref} className={bump ? "bump" : ""}></CursorStyle>;
 };
 
 export default Cursor;
 
 const CursorStyle = styled.div`
   position: fixed;
+  color: white;
   top: 400px;
   left: 400px;
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   background: #ea281e;
   border-radius: 100%;
   transform: translate(-50%, -50%);
-  transition: all 0.1s ease-out;
+  transition: all 300ms ease-out;
   transition-property: width, height, border;
   will-change: width, height, transform, border;
   pointer-events: none;
-  z-index: 999;
+  z-index: 9998;
+  &.bump {
+    background: transparent !important;
+    width: 55px;
+    height: 55px;
+    border: 4px solid #ea281e;
+    border: 4px solid #ea281e;
+  }
 `;

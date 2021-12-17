@@ -17,7 +17,7 @@ export const UnderLine = styled.div`
 `;
 
 export const Footer = styled.footer`
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,11 +45,11 @@ export const ContactPanel = styled.div`
 `;
 
 export const H1 = styled.h1`
-  @media screen and (min-width: 1132px) {
+  @media screen and (min-width: 1226px) {
     font-size: 28vmin;
   }
 
-  @media screen and (max-width: 1132px) {
+  @media screen and (max-width: 1226px) {
     font-size: 20vmin;
   }
 
@@ -69,6 +69,5 @@ export const Button = styled.button`
   font-size: calc((60 / 31) * 1rem);
   border: none;
   background: none;
-  cursor: pointer;
   color: ${(props) => props.theme.darkThemeColor};
 `;
