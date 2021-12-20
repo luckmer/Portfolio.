@@ -23,7 +23,7 @@ import UseWindowScrollHook from "../hooks/useWindowScroll";
 const darkTheme = {
   background: "#646461",
   color: "#fff",
-  dot: "blue",
+  dot: "pink",
   change: "#646461",
   layoutBackground: "#646461",
   darkThemeBackground: "#0f0f0f",
@@ -31,19 +31,20 @@ const darkTheme = {
 };
 
 const lightTheme = {
-  background: "#0f0f0f",
-  color: "#fff",
+  background: "#f9f5f1",
+  color: "black",
   dot: "red",
   change: "#191917",
   layoutBackground: "#1e1e1e",
-  darkThemeBackground: "#646461",
-  darkThemeColor: "#FFF"
+  darkThemeBackground: "#f9f5f1",
+  darkThemeColor: "black"
 };
 
 // markup
 const Layout = ({ children }) => {
   const { state } = useContext(AppContext);
   const { scrollTop } = UseWindowScrollHook();
+  const darkStatus = state.switchTheme;
 
   return (
     <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
@@ -56,7 +57,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Hamburger />
       <Nav />
-      <CirclePanel scrollTop={scrollTop} />
+      <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
       <Main>{children}</Main>
     </ThemeProvider>
   );

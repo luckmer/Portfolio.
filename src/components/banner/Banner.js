@@ -31,7 +31,7 @@ const Banner = () => {
     let mouse = { x: 0, y: 0 };
 
     renderingCtx.globalCompositeOperation = "source-over";
-    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#646461";
+    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
     renderingCtx.fillRect(0, 0, size.width, size.height);
 
     renderingElement.addEventListener("mouseover", (ev) => {
@@ -49,7 +49,7 @@ const Banner = () => {
       drawingCtx.moveTo(mouse.x, mouse.y);
       drawingCtx.lineTo(currentX, currentY);
       drawingCtx.closePath();
-      drawingCtx.lineWidth = 150;
+      drawingCtx.lineWidth = 200;
       drawingCtx.stroke();
 
       mouse = { x: currentX, y: currentY };
@@ -58,7 +58,7 @@ const Banner = () => {
     if (state.switchTheme) {
       renderingCtx.clearRect(0, 0, size.width, size.height);
       renderingCtx.rect(0, 0, size.width, size.height);
-      renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#646461";
+      renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
       renderingCtx.fill();
     }
   }, [size.width, size.height, ref, state.switchTheme]);

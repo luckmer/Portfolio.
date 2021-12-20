@@ -25,7 +25,7 @@ const Contact = () => {
         onMouseOut={handleOutMouse}
       >
         <a href="mailto:https://piotrsebastiangoik@gmail.com">
-          <H1>CONTACT</H1>
+          <H1>LET'S TALK</H1>
         </a>
         <Button
           onClick={scrollToTop}
@@ -37,7 +37,7 @@ const Contact = () => {
       </ContactPanel>
       <UnderLine>
         <TextAnimation>
-          <BannerRowCenter title="contact" speed={2} />
+          <BannerRowCenter title="let's-talk" speed={2} />
         </TextAnimation>
       </UnderLine>
     </Footer>

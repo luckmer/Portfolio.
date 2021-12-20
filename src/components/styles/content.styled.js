@@ -45,7 +45,6 @@ export const Small = styled.small`
 `;
 
 export const ContentContainer = styled.div`
-  height: 100vh;
   width: 100%;
   text-align: center;
 `;
@@ -71,7 +70,7 @@ export const MainDivHeader = styled.div`
   margin: 10vw 0;
   width: 100%;
   text-align: center;
-
+  color: ${(props) => props.theme.darkThemeColor};
   h2 {
     margin: auto;
     font-size: 8.5vw;
@@ -81,7 +80,7 @@ export const MainDivHeader = styled.div`
   p {
     margin: auto;
     width: 80%;
-
+    font-family: "Bakbak One", cursive;
     @media screen and (max-width: 3372px) {
       font-size: 5vw;
     }
@@ -105,7 +104,6 @@ export const MainDivHeader = styled.div`
     }
   }
 
-  color: ${(props) => props.theme.darkThemeColor};
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   margin-bottom: calc((36 / 31) * 1vmin);
 
@@ -130,7 +128,6 @@ export const Rotate = styled.img`
   bottom: 3.5vmin;
   left: 3.5vmin;
   z-index: 1001;
-
   transform: rotate(${({ rotate }) => `${rotate}deg`});
   pointer-events: none;
   mix-blend-mode: difference;

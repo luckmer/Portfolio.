@@ -3,10 +3,21 @@ import {
   BannerContainer,
   BrandSpan,
   LettersSpan,
-  Speed
+  Speed,
+  TextSpped
 } from "../styles/banner.styled";
 
-const BannerRowCenter = ({ title, speed }) => {
+const BannerRowCenter = ({ title, speed, type }) => {
+  if (type) {
+    return (
+      <BannerContainer>
+        <AnimatedText title={title} speed={speed} />
+        <AnimatedText title={title} speed={speed} />
+        <AnimatedText title={title} speed={speed} />
+        <AnimatedText title={title} speed={speed} />
+      </BannerContainer>
+    );
+  }
   return (
     <BannerContainer>
       <AnimatedLetters title={title} speed={speed} />
@@ -14,6 +25,14 @@ const BannerRowCenter = ({ title, speed }) => {
       <AnimatedLetters title={title} speed={speed} />
       <AnimatedLetters title={title} speed={speed} />
     </BannerContainer>
+  );
+};
+
+const AnimatedText = ({ title, speed }) => {
+  return (
+    <TextSpped speed={speed}>
+      <p>{title}</p>
+    </TextSpped>
   );
 };
 

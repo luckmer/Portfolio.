@@ -58,10 +58,17 @@ const Nav = () => {
             <Link to="/">TR</Link>
           </Logo>
           <Hamburger
+            className={
+              state.switchHamburgerStatus ? "animateRotate" : "endAnimateRotate"
+            }
             onMouseEnter={() => handleHoverCursor()}
             onMouseLeave={handleOutMouse}
           >
-            <button onClick={handleControlHamburger}>
+            <button
+              onClick={handleControlHamburger}
+              onBlur={() => void 0}
+              onFocus={() => void 0}
+            >
               <span></span>
               <span></span>
             </button>

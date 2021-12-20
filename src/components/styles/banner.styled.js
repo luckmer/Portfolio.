@@ -63,6 +63,28 @@ export const Speed = styled(LetterContainer)`
   }
 `;
 
+export const TextSpped = styled.span`
+  animation: ${rotate} 10s linear infinite;
+  position: relative;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  height: 100%;
+  padding: 0 10vw;
+  display: block;
+  white-space: nowrap;
+
+  p {
+    font-size: 1.8vmin;
+    font-weight: bold;
+    color: ${(props) => props.theme.dot};
+    -webkit-transition: color 500ms linear !important;
+    -ms-transition: color 500ms linear !important;
+    transition: color 500ms linear !important;
+  }
+`;
+
+export const LowSpeed = styled(LetterContainer);
+
 export const BannerContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -82,7 +104,7 @@ export const BannerMain = styled.section`
   margin-bottom: 296px;
   display: flex;
   flex-direction: column;
-  background: ${(props) => props.theme.background};
+  background: ${(props) => props.theme.darkThemeBackground};
 `;
 
 export const Canvas = styled.canvas`

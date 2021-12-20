@@ -50,6 +50,6 @@ const CursorStyle = styled.div`
     background: transparent !important;
     width: 5.7vmin;
     height: 5.7vmin;
-    border: 0.5vmin solid #ea281e;
+    border: 0.4vmin solid #ea281e;
   }
 `;

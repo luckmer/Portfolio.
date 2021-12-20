@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   -webkit-transition: background-color 500ms linear;
   -ms-transition: background-color 500ms linear;
   transition: background-color 500ms linear;
-  cursor: none;
 }
 
 body{

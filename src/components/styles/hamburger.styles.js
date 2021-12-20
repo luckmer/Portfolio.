@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const A = styled.a`
   font-size: 2vmin;
@@ -13,8 +13,10 @@ export const FooterSpan = styled.span`
 `;
 
 export const Footer = styled.footer`
+  border-top: 1px solid #fff;
   z-index: 1010;
   position: absolute;
+
   bottom: 0;
   left: 0;
   width: 100%;
@@ -23,7 +25,8 @@ export const Footer = styled.footer`
   justify-content: space-between;
   position: relative;
   text-transform: uppercase;
-  padding: 0 calc((53 / 31) * 1vmin) calc((49 / 31) * 1vmin);
+  padding: calc((53 / 31) * 1vmin) calc((49 / 31) * 1vmin)
+    calc((53 / 31) * 1vmin) calc((49 / 31) * 1vmin);
 `;
 
 export const HideArrow = styled.span`
@@ -33,12 +36,35 @@ export const HideArrow = styled.span`
   opacity: 0;
   left: -40%;
   position: relative;
+  color: ${(props) => props.theme.darkThemeColor};
 
   &.rotate {
     opacity: 1;
     width: 10vmin;
     left: 0;
   }
+`;
+
+const Open = keyframes`
+
+from{
+  transform: translateY(100%);
+}
+to{
+  transform: translateY(0);
+}
+
+`;
+
+const hide = keyframes`
+
+from{
+  transform: translateY(0);
+}
+to{
+  transform: translateY(-100%);
+}
+
 `;
 
 export const SpanFlex = styled.div`
@@ -102,11 +128,13 @@ export const Ul = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 `;
 
 export const Li = styled.li`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const Nav = styled.section`
@@ -122,4 +150,39 @@ export const Nav = styled.section`
     text-decoration: none;
     list-style: none;
   }
+`;
+
+export const CounterSpan = styled.span`
+  color: ${(props) => props.theme.darkThemeColor};
+  font-size: 15vmin;
+  text-transform: uppercase;
+
+  font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
+  display: inline-flex;
+  font-weight: bold;
+  transform: translateY(0);
+  &.rotate {
+    animation: ${Open} 400ms both;
+
+    z-index: 999;
+    background: ${(props) => props.theme.darkThemeBackground};
+    transform: translateY(0);
+  }
+
+  &.out {
+    animation: ${hide} 400ms both;
+
+    z-index: -999;
+    background: ${(props) => props.theme.darkThemeBackground};
+  }
+
+  overflow: hidden;
+`;
+
+export const DivCounterSpacer = styled.div`
+  margin: 0 2vmin;
+  position: absolute;
+  right: 3vmin;
+  bottom: 3vmin;
+  overflow-y: hidden;
 `;

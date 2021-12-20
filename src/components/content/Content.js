@@ -25,9 +25,10 @@ import {
   CircleSpacer,
   Circle
 } from "../styles/content.styled";
+import Projects from "../projects/Projects";
 
 const Content = () => {
-  const { functions } = useContext(AppContext);
+  const { functions, state } = useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
 
   return (
@@ -84,16 +85,7 @@ const Content = () => {
         <H2>
           <Small>( 002 )</Small>Recent Work
         </H2>
-        <Link to="/projects">
-          <CircleSpacer>
-            <Circle
-              src={Arrow}
-              alt={Arrow}
-              onMouseEnter={() => handleHoverCursor()}
-              onMouseLeave={handleOutMouse}
-            />
-          </CircleSpacer>
-        </Link>
+        <Projects />
       </ContentContainer>
     </Div1>
   );

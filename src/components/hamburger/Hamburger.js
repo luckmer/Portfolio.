@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 
 //store
 import { AppContext } from "../../store/store";
@@ -16,12 +17,15 @@ import {
   Span,
   Footer,
   FooterSpan,
-  A
+  A,
+  CounterSpan,
+  DivCounterSpacer
 } from "../styles/hamburger.styles";
 
 const Hamburger = () => {
   const { state, dispatch, functions } = useContext(AppContext);
   const [rotate, setRotate] = useState({ text: "", number: "" });
+  const [pathLocation, setPathLocation] = useState("");
   const { handleHoverCursor, handleOutMouse } = functions;
 
   const hamburgerStatus = state.switchHamburgerStatus;
@@ -48,6 +52,22 @@ const Hamburger = () => {
     dispatch({ type: "CURSOR_OVER", payload: false });
   };
 
+  useEffect(() => {
+    const locations = [
+      { name: "home", path: "/" },
+      { name: "projects", path: "/projects" }
+    ];
+    const path = window.location.pathname;
+    const currentPath = locations.find((el) => el.path === path.toString());
+
+    setPathLocation(currentPath.name);
+  }, []);
+
+  const name = (text) =>
+    (pathLocation === text && !rotate.text) || rotate.text === text
+      ? "rotate"
+      : "out";
+
   return hamburgerStatus ? (
     <Nav>
       <AnimatedDivs>
@@ -63,33 +83,35 @@ const Hamburger = () => {
             const number = el.number;
             const link = el.link;
             return (
-              <Li
-                key={i}
-                onMouseEnter={() => handleMouseOver(text, number)}
-                onMouseLeave={handleMouseOut}
-              >
-                <SpanFlex className={rotate.text === text ? "rotate" : ""}>
-                  <HideArrow className={rotate.text === text ? "rotate" : ""}>
-                    &rArr;
-                  </HideArrow>
+              <Li key={i}>
+                <SpanFlex
+                  className={rotate.text === text ? "rotate" : ""}
+                  onMouseEnter={() => handleMouseOver(text, number)}
+                  onMouseLeave={handleMouseOut}
+                >
+                  <HideArrow className={name(text)}>&rArr;</HideArrow>
                   {[...text].map((el, i) =>
                     link ? (
-                      <Span
-                        key={i}
-                        className={rotate.text === text ? "rotate" : ""}
-                      >
-                        <a href="https://github.com/luckmer">{el}</a>
-                      </Span>
+                      <FlexDiv key={i}>
+                        <Span className={rotate.text === text ? "rotate" : ""}>
+                          <a href="https://github.com/luckmer">{el}</a>
+                        </Span>
+                      </FlexDiv>
                     ) : (
-                      <Span
-                        key={i}
-                        className={rotate.text === text ? "rotate" : ""}
-                      >
-                        {el}
-                      </Span>
+                      <FlexDiv key={i}>
+                        <Span
+                          className={rotate.text === text ? "rotate" : "out"}
+                        >
+                          {el}
+                        </Span>
+                      </FlexDiv>
                     )
                   )}
                 </SpanFlex>
+                <DivCounterSpacer>
+                  <CounterSpan>0</CounterSpan>
+                  <CounterSpan className={name(text)}>{number}</CounterSpan>
+                </DivCounterSpacer>
               </Li>
             );
           })}
@@ -102,9 +124,10 @@ const Hamburger = () => {
         <div
           onMouseEnter={handleHoverCursor}
           onMouseOut={handleOutMouse}
-          role="button"
-          onBlur=""
           tabIndex={0}
+          role="button"
+          onBlur={() => void 0}
+          onFocus={() => void 0}
         >
           <A href="https://github.com/luckmer">GITHUB</A>
         </div>
@@ -117,3 +140,7 @@ const Hamburger = () => {
 };
 
 export default Hamburger;
+
+const FlexDiv = styled.div`
+  display: inline-flex;
+`;
