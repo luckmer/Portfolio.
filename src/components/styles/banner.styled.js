@@ -64,7 +64,7 @@ export const Speed = styled(LetterContainer)`
 `;
 
 export const TextSpped = styled.span`
-  animation: ${rotate} 10s linear infinite;
+  animation: ${reverseRotate} 12s linear infinite;
   position: relative;
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -74,12 +74,23 @@ export const TextSpped = styled.span`
   white-space: nowrap;
 
   p {
-    font-size: 1.8vmin;
     font-weight: bold;
     color: ${(props) => props.theme.dot};
     -webkit-transition: color 500ms linear !important;
     -ms-transition: color 500ms linear !important;
     transition: color 500ms linear !important;
+  }
+
+  @media screen and (min-width: 1000px) {
+    p {
+      font-size: 2vmin;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    p {
+      font-size: 2.7vmin;
+    }
   }
 `;
 

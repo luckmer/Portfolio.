@@ -79,6 +79,7 @@ export const SpanFlex = styled.div`
 
   a {
     text-decoration: none;
+    white-space: nowrap;
   }
 `;
 

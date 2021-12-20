@@ -216,6 +216,7 @@ export const Logo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background: none;
 
   a {
     font-family: "Bakbak One", cursive;
@@ -229,6 +230,7 @@ export const Logo = styled.div`
     height: 2vmin;
     width: 2vmin;
     margin: 0 0.4vmin;
+    border: none;
     border-radius: 100%;
     display: inline-block;
     bottom: 2px;

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { index } from "../../api";
 import styled, { keyframes } from "styled-components";
 import BannerRowCenter from "../helper/BannerGenerator";
+import { AppContext } from "../../store/store";
+import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
@@ -20,12 +22,18 @@ const useMousePosition = () => {
 };
 
 const Projects = () => {
+  const { dispatch } = useContext(AppContext);
+
   const [entered, setEntered] = useState("");
   const mouse = useMousePosition();
+
   const handleMouseEnter = (name) => {
+    dispatch({ type: "CURSOR_OVER", payload: true });
     setEntered(name);
   };
+
   const handleMouseOut = () => {
+    dispatch({ type: "CURSOR_OVER", payload: false });
     setEntered("");
   };
 
@@ -36,18 +44,24 @@ const Projects = () => {
           <Section key={i}>
             <DivContainer>
               <HeaderSpacer>
+                <Li key={i}>
+                  <SpanFlex
+                    className={entered === el.name ? "rotate" : ""}
+                    onMouseEnter={() => handleMouseEnter(el.name)}
+                    onMouseLeave={handleMouseOut}
+                  >
+                    <HideArrow className={entered === el.name ? "rotate" : ""}>
+                      &rArr;
+                    </HideArrow>
+                    <a href={el.link}>
+                      <Span className={entered === el.name ? "rotate" : ""}>
+                        {el.name}
+                      </Span>
+                    </a>
+                  </SpanFlex>
+                </Li>
                 <div>
-                  <a href={el.link}>
-                    <P
-                      onMouseEnter={() => handleMouseEnter(el.name)}
-                      onMouseOut={() => handleMouseOut()}
-                    >
-                      {el.name}
-                    </P>
-                  </a>
-                  <div>
-                    <BannerRowCenter title={el.tech} speed={2} type={true} />
-                  </div>
+                  <BannerRowCenter title={el.tech} speed={2} type={true} />
                 </div>
                 <ImgSpacer style={{ left: mouse.x, top: mouse.y }}>
                   {el.img ? (
@@ -59,7 +73,10 @@ const Projects = () => {
                   ) : (
                     <ImgInformation
                       className={entered === el.name ? "open" : "hide"}
-                      style={{ left: mouse.x, top: mouse.y }}
+                      style={{
+                        left: entered ? mouse.x : 0,
+                        top: entered ? mouse.y : 0
+                      }}
                     >
                       <p>❌❌❌</p>
                     </ImgInformation>
@@ -93,38 +110,50 @@ const information = keyframes`
 `;
 
 const ImgInformation = styled.div`
-  background-color: ${({ theme }) => theme.darkThemeColor};
-  width: auto;
-  height: 10vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 6vmin;
-  border-radius: 20px;
-  color: ${({ theme }) => theme.darkThemeBackground};
+  @media screen and (min-width: 1000px) {
+    background-color: ${({ theme }) => theme.darkThemeColor};
+    width: auto;
+    height: 10vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vmin;
+    border-radius: 20px;
+    color: ${({ theme }) => theme.darkThemeBackground};
 
-  &.hide {
-    opacity: 0;
+    &.hide {
+      opacity: 0;
+    }
+
+    &.open {
+      p {
+        animation: ${information} 1200ms linear infinite;
+      }
+    }
   }
 
-  &.open {
-    p {
-      animation: ${information} 1200ms linear infinite;
-    }
+  @media screen and (max-width: 1000px) {
+    display: none;
   }
 `;
 
 const ImgSpacer = styled.div`
-  overflow-x: hidden;
-  position: fixed;
-  transition: 100ms linear all;
-  bottom: 3.5vmin;
-  left: 3.5vmin;
-  z-index: 1001;
-  pointer-events: none;
+  @media screen and (min-width: 1000px) {
+    overflow-x: hidden;
+    position: fixed;
+    transition: 100ms linear all;
+    bottom: 3.5vmin;
+    left: 3.5vmin;
+    z-index: 1001;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 const Img = styled.img`
-  width: 100vmin;
+  width: 90vmin;
   object-fit: contain;
   transition: 100ms linear all;
   border-radius: 15px;
@@ -139,8 +168,15 @@ const Img = styled.img`
 `;
 
 const Section = styled.div`
-  width: 80%;
-  margin: auto;
+  @media screen and (min-width: 1000px) {
+    width: 90%;
+    margin: auto;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+    margin: auto;
+  }
 `;
 
 const DivContainer = styled.div`
@@ -148,8 +184,15 @@ const DivContainer = styled.div`
 
   text-align: left;
   margin-bottom: 100px;
-  width: 50%;
   margin-top: 100px;
+
+  @media screen and (min-width: 1000px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 const HeaderSpacer = styled.div`
@@ -158,16 +201,5 @@ const HeaderSpacer = styled.div`
   a {
     color: ${({ theme }) => theme.darkThemeColor};
     text-decoration: none;
-  }
-`;
-
-const P = styled.p`
-  font-size: 5.5vw;
-  margin: auto;
-  font-weight: bolder;
-  transform: translateX(${({ scroll }) => `${scroll}px`});
-  font-family: "Bakbak One", cursive;
-  small {
-    font-size: 2vmin;
   }
 `;
