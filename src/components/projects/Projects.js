@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { index } from "../../api";
 import styled, { keyframes } from "styled-components";
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -25,16 +25,19 @@ const Projects = () => {
   const { dispatch } = useContext(AppContext);
 
   const [entered, setEntered] = useState("");
+  const [moving, setMoving] = useState(false);
   const mouse = useMousePosition();
 
   const handleMouseEnter = (name) => {
-    dispatch({ type: "CURSOR_OVER", payload: true });
+    dispatch({ type: "ON_PROJECTS", payload: true });
     setEntered(name);
+    setMoving(true);
   };
 
   const handleMouseOut = () => {
-    dispatch({ type: "CURSOR_OVER", payload: false });
+    dispatch({ type: "ON_PROJECTS", payload: false });
     setEntered("");
+    setMoving(false);
   };
 
   return (
@@ -74,8 +77,8 @@ const Projects = () => {
                     <ImgInformation
                       className={entered === el.name ? "open" : "hide"}
                       style={{
-                        left: entered ? mouse.x : 0,
-                        top: entered ? mouse.y : 0
+                        left: moving && mouse.x,
+                        top: moving && mouse.y
                       }}
                     >
                       <p>❌❌❌</p>
@@ -91,22 +94,19 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default memo(Projects);
 
 const information = keyframes`
 
 0% {
   opacity: 1;
 }
-
 50% {
   opacity: 0;
 }
-
 100%{
   opacity:1;
 }
-
 `;
 
 const ImgInformation = styled.div`
@@ -196,10 +196,22 @@ const DivContainer = styled.div`
 `;
 
 const HeaderSpacer = styled.div`
-  padding-top: 40px;
-  padding-bottom: 40px;
   a {
     color: ${({ theme }) => theme.darkThemeColor};
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    text-decoration: none;
+    display: block;
+    position: relative;
+    text-transform: uppercase;
+    padding-top: 2vmin;
+    padding-bottom: 2vmin;
+  }
+
+  @media screen and (min-width: 700px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 `;

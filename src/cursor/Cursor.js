@@ -25,8 +25,14 @@ const Cursor = () => {
   }, []);
 
   const bump = state.switchCursorBump;
+  const projectsOn = state.onProjects;
 
-  return <CursorStyle ref={ref} className={bump ? "bump" : ""}></CursorStyle>;
+  return (
+    <CursorStyle
+      ref={ref}
+      className={bump ? "bump" : projectsOn ? "hexagon" : ""}
+    ></CursorStyle>
+  );
 };
 
 export default Cursor;
@@ -45,11 +51,21 @@ const CursorStyle = styled.div`
   transition-property: width, height, border;
   will-change: width, height, transform, border;
   pointer-events: none;
-  z-index: 9998;
+  z-index: 9999;
   &.bump {
     background: transparent !important;
     width: 5.7vmin;
     height: 5.7vmin;
     border: 0.4vmin solid #ea281e;
+  }
+  &.hexagon {
+    z-index: 0;
+    margin: 0 auto;
+    width: 10vmin;
+    height: 10vmin;
+    box-sizing: border-box;
+    background-color: red transparent;
+    border-radius: 5px;
+    position: fixed;
   }
 `;

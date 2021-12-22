@@ -30,6 +30,10 @@ export const Footer = styled.footer`
 `;
 
 export const HideArrow = styled.span`
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+
   transition: all 500ms ease;
   font-size: 10vmin;
   width: 0;
@@ -157,11 +161,10 @@ export const CounterSpan = styled.span`
   color: ${(props) => props.theme.darkThemeColor};
   font-size: 15vmin;
   text-transform: uppercase;
-
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   display: inline-flex;
   font-weight: bold;
-  transform: translateY(0);
+  transform: translateY(-100%);
   &.rotate {
     animation: ${Open} 400ms both;
 

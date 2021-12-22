@@ -92,6 +92,11 @@ export const TextSpped = styled.span`
       font-size: 2.7vmin;
     }
   }
+  @media screen and (max-width: 700px) {
+    p {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const LowSpeed = styled(LetterContainer);
@@ -112,10 +117,17 @@ export const BannerContainer = styled.div`
 export const BannerMain = styled.section`
   height: 100vh;
   width: 100%;
-  margin-bottom: 296px;
   display: flex;
   flex-direction: column;
   background: ${(props) => props.theme.darkThemeBackground};
+
+  @media screen and (min-width: 700px) {
+    margin-bottom: 296px;
+  }
+
+  
+  @media screen and (max-width: 700px) {
+    margin-bottom:100vmin;
 `;
 
 export const Canvas = styled.canvas`
@@ -126,7 +138,10 @@ export const Canvas = styled.canvas`
   bottom: 0px;
   width: 100%;
   height: 100%;
-  z-index: 999;
+  z-index: 998;
+  &.mobile {
+    z-index: 999;
+  }
 `;
 
 export const TextAnimation = styled.div`

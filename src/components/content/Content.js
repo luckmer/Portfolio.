@@ -1,13 +1,7 @@
 import React, { useContext } from "react";
 
-//link
-import { Link } from "gatsby";
-
 //hooks
 import BannerRowCenter from "../helper/BannerGenerator";
-
-//images
-import Arrow from "../../images/cirlce.png";
 
 //styles
 import { TextAnimation } from "../styles/banner.styled";
@@ -21,14 +15,12 @@ import {
   H2,
   Small,
   AnimationPanel,
-  ContentContainer,
-  CircleSpacer,
-  Circle
+  ContentContainer
 } from "../styles/content.styled";
 import Projects from "../projects/Projects";
 
 const Content = () => {
-  const { functions, state } = useContext(AppContext);
+  const { functions } = useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
 
   return (

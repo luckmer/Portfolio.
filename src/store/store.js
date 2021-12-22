@@ -3,7 +3,8 @@ import React, { createContext, useReducer } from "react";
 const initialState = {
   switchTheme: false,
   switchCursorBump: false,
-  switchHamburgerStatus: false
+  switchHamburgerStatus: false,
+  onProjects: false
 };
 
 const switchThemePanel = (state, action) => {
@@ -35,10 +36,20 @@ const SwitchHamburgerPanel = (state, action) => {
   }
 };
 
+const swichOnProjects = (state, action) => {
+  switch (action.type) {
+    case "ON_PROJECTS":
+      return action.payload;
+    default:
+      return state.onProjects;
+  }
+};
+
 const reducer = (state, action) => ({
   switchTheme: switchThemePanel(state, action),
   switchCursorBump: SwitchCursorPanel(state, action),
-  switchHamburgerStatus: SwitchHamburgerPanel(state, action)
+  switchHamburgerStatus: SwitchHamburgerPanel(state, action),
+  onProjects: swichOnProjects(state, action)
 });
 
 const AppContext = createContext({ state: initialState, dispatch: () => null });

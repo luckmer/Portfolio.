@@ -37,6 +37,10 @@ export const H2 = styled.h2`
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
+
+  @media screen and (max-width: 700px) {
+    white-space: nowrap;
+  }
 `;
 
 export const Small = styled.small`
@@ -53,17 +57,26 @@ export const AnimationPanel = styled.div`
   width: 100%;
   border-top: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
   border-bottom: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
-  margin 200px 0;
+  @media screen and (min-width: 700px) {
+    margin: 200px 0;
+  }
 
-  `;
+  @media screen and (max-width: 700px) {
+    margin-top: 100vmin;
+    margin-bottom: 20vmin;
+  }
+`;
 
 export const Div1 = styled.div`
-  padding-top: 200px;
   margin-bottom: 200px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media screen and (min-width: 700px) {
+    padding-top: 200px;
+  }
 `;
 
 export const MainDivHeader = styled.div`
