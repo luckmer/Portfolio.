@@ -9,7 +9,7 @@ const PcCanvasBanner = (
   let moving = false;
 
   renderingCtx.globalCompositeOperation = "source-over";
-  renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
+  renderingCtx.fillStyle = state ? "#0f0f0f" : "#f9f5f1";
   renderingCtx.fillRect(0, 0, size.width, size.height);
 
   renderingElement.addEventListener("mouseup", (ev) => {
@@ -50,10 +50,10 @@ const PcCanvasBanner = (
     }
   });
 
-  if (state.switchTheme) {
+  if (state) {
     renderingCtx.clearRect(0, 0, size.width, size.height);
     renderingCtx.rect(0, 0, size.width, size.height);
-    renderingCtx.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
+    renderingCtx.fillStyle = state ? "#0f0f0f" : "#f9f5f1";
     renderingCtx.fill();
   }
 };

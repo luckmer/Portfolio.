@@ -17,9 +17,9 @@ export const UnderLine = styled.div`
 `;
 
 export const Footer = styled.footer`
-  height: auto;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   padding: calc((190 / 31) * 1vmin) 0 calc((73 / 31) * 1vmin);

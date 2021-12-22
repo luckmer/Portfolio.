@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext, memo } from "react";
 import { index } from "../../api";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import BannerRowCenter from "../helper/BannerGenerator";
 import { AppContext } from "../../store/store";
 import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
+import { BsImage } from "react-icons/bs";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
@@ -81,7 +82,7 @@ const Projects = () => {
                         top: moving && mouse.y
                       }}
                     >
-                      <p>❌❌❌</p>
+                      <BsImage />
                     </ImgInformation>
                   )}
                 </ImgSpacer>
@@ -96,39 +97,20 @@ const Projects = () => {
 
 export default memo(Projects);
 
-const information = keyframes`
-
-0% {
-  opacity: 1;
-}
-50% {
-  opacity: 0;
-}
-100%{
-  opacity:1;
-}
-`;
-
 const ImgInformation = styled.div`
   @media screen and (min-width: 1000px) {
     background-color: ${({ theme }) => theme.darkThemeColor};
-    width: auto;
-    height: 10vmin;
+    width: 50vmin;
+    height: 20vmin;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 6vmin;
+    font-size: 20vmin;
     border-radius: 20px;
     color: ${({ theme }) => theme.darkThemeBackground};
 
     &.hide {
       opacity: 0;
-    }
-
-    &.open {
-      p {
-        animation: ${information} 1200ms linear infinite;
-      }
     }
   }
 

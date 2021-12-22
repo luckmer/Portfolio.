@@ -1,9 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
 export const A = styled.a`
-  font-size: 2vmin;
+  font-size: 3vmin;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   text-decoration: none;
+
   color: ${(props) => props.theme.darkThemeColor};
 `;
 
@@ -13,10 +14,9 @@ export const FooterSpan = styled.span`
 `;
 
 export const Footer = styled.footer`
-  border-top: 1px solid #fff;
+  border-top: 1px solid ${(props) => props.theme.darkThemeColor};
   z-index: 1010;
   position: absolute;
-
   bottom: 0;
   left: 0;
   width: 100%;
@@ -164,7 +164,7 @@ export const CounterSpan = styled.span`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   display: inline-flex;
   font-weight: bold;
-  transform: translateY(-100%);
+  transform: translateY(0);
   &.rotate {
     animation: ${Open} 400ms both;
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef, useState } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 
 //helper
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -41,11 +41,17 @@ const Banner = () => {
       ) ||
       /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)
     ) {
-      MobileCanvasBanner(renderingElement, state, size);
+      MobileCanvasBanner(renderingElement, state.switchTheme, size);
     } else {
-      PcCanvasBanner(renderingCtx, state, size, renderingElement, drawingCtx);
+      PcCanvasBanner(
+        renderingCtx,
+        state.switchTheme,
+        size,
+        renderingElement,
+        drawingCtx
+      );
     }
-  }, [size.width, size.height, state.switchTheme]);
+  }, [size.width, size.height, state.switchTheme, size]);
 
   return (
     <BannerMain>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 
 //css
 import GlobalStyle from "../styles/GlobalStyle.styled";
@@ -45,9 +45,27 @@ const Layout = ({ children }) => {
   const { state } = useContext(AppContext);
   const { scrollTop } = UseWindowScrollHook();
   const darkStatus = state.switchTheme;
+  const progress = useRef(null);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const scrollBar = progress.current;
+
+    let scrollTop =
+      document.documentElement["scrollTop"] || document.body["scrollTop"];
+
+    let scrollBottom =
+      (document.documentElement["scrollHeight"] ||
+        document.body["scrollHeight"]) - document.documentElement.clientHeight;
+
+    let scrollPercent = (scrollTop / scrollBottom) * 100;
+
+    scrollBar.style.width = `${scrollPercent}%`;
+  }, [scrollTop]);
 
   return (
     <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
+      <ScrollBar ref={progress} />
       <Helmet>
         <style>
           @import
@@ -58,7 +76,8 @@ const Layout = ({ children }) => {
       <Hamburger />
       <Nav />
       <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
-      <Main>{children}</Main>
+
+      <Main ref={ref}>{children}</Main>
     </ThemeProvider>
   );
 };
@@ -69,4 +88,14 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+const ScrollBar = styled.div`
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0.5vmin;
+  background: pink;
+  z-index: 999999;
 `;

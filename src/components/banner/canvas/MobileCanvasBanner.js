@@ -13,17 +13,17 @@ const MobileCanvasBanner = (renderingElement, state, size) => {
   );
 
   mobileCTX.globalCompositeOperation = "source-over";
-  mobileCTX.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
+  mobileCTX.fillStyle = state ? "#0f0f0f" : "#f9f5f1";
   mobileCTX.fillRect(0, 0, size.width, size.height);
 
-  function draw(currentX, currentY) {
+  const draw = (currentX, currentY) => {
     mobileCTX.globalCompositeOperation = "source-over";
     mobileCTX.globalCompositeOperation = "source-over";
-    mobileCTX.fillStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
+    mobileCTX.fillStyle = state ? "#0f0f0f" : "#f9f5f1";
     mobileCTX.fillRect(0, 0, size.width, size.height);
     circles.fakeBlock();
     circles.draw(currentX, currentY);
-  }
+  };
 
   let draggable = false;
 
@@ -37,7 +37,7 @@ const MobileCanvasBanner = (renderingElement, state, size) => {
     this.fill = fill;
     this.stroke = stroke;
 
-    this.draw = function (currentX, currentY) {
+    this.draw = (currentX, currentY) => {
       context.globalCompositeOperation = "destination-out";
 
       context.lineJoin = "round";
@@ -45,7 +45,7 @@ const MobileCanvasBanner = (renderingElement, state, size) => {
 
       context.beginPath();
       context.arc(this.x, this.y, this.r, this.startingAngle, this.endAngle);
-      context.strokeStyle = state.switchTheme ? "#0f0f0f" : "#f9f5f1";
+      context.strokeStyle = state ? "#0f0f0f" : "#f9f5f1";
       context.font = "bold 2vmin Calibri";
       context.textAlign = "center";
       context.textBaseline = "middle";
@@ -64,7 +64,7 @@ const MobileCanvasBanner = (renderingElement, state, size) => {
       fakeDraw.fillStyle = "white";
       fakeDraw.beginPath();
       fakeDraw.arc(this.x, this.y, this.r, this.startingAngle, this.endAngle);
-      fakeDraw.strokeStyle = state.switchTheme ? "#fff" : "#ffff";
+      fakeDraw.strokeStyle = state ? "#fff" : "#ffff";
       fakeDraw.font = "bold 2vmin Calibri";
       fakeDraw.textAlign = "center";
       fakeDraw.textBaseline = "middle";
@@ -125,11 +125,11 @@ const MobileCanvasBanner = (renderingElement, state, size) => {
     } else document.body.style.overflow = "unset";
   };
 
-  function intersects(circle, mousePosition) {
-    var areaX = mousePosition.clientX - circle.x;
-    var areaY = mousePosition.clientY - circle.y;
+  const intersects = (circle, mousePosition) => {
+    let areaX = mousePosition.clientX - circle.x;
+    let areaY = mousePosition.clientY - circle.y;
     return areaX * areaX + areaY * areaY <= circle.r * circle.r;
-  }
+  };
 
   renderingElement.addEventListener("touchstart", handleMouseStart, false);
   renderingElement.addEventListener("touchend", handleTouchEnd, false);

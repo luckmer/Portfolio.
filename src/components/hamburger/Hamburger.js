@@ -4,6 +4,9 @@ import styled from "styled-components";
 //store
 import { AppContext } from "../../store/store";
 
+//icons
+import { BsGithub } from "react-icons/bs";
+
 //styles
 import {
   Nav,
@@ -129,7 +132,9 @@ const Hamburger = () => {
           onBlur={() => void 0}
           onFocus={() => void 0}
         >
-          <A href="https://github.com/luckmer">GITHUB</A>
+          <A href="https://github.com/luckmer">
+            <BsGithub />
+          </A>
         </div>
         <div></div>
       </Footer>
