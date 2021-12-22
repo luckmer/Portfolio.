@@ -1,6 +1,12 @@
 import React, { useContext } from "react";
+
+//store
 import { AppContext } from "../../store/store";
+
+//helper
 import BannerRowCenter from "../helper/BannerGenerator";
+
+//styles
 import { TextAnimation } from "../styles/banner.styled";
 import {
   Footer,

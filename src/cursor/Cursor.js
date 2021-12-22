@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useRef } from "react";
+
+//styles
 import styled from "styled-components";
+
+//store
 import { AppContext } from "../store/store";
 
 const Cursor = () => {
@@ -52,12 +56,14 @@ const CursorStyle = styled.div`
   will-change: width, height, transform, border;
   pointer-events: none;
   z-index: 9999;
+
   &.bump {
     background: transparent !important;
     width: 5.7vmin;
     height: 5.7vmin;
     border: 0.4vmin solid #ea281e;
   }
+
   &.hexagon {
     z-index: 0;
     margin: 0 auto;

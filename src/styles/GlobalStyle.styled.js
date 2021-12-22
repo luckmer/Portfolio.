@@ -21,9 +21,7 @@ body{
 
 ::-webkit-scrollbar {
   width:0;
-  
 }
-
 
 ::selection {
   color: #fff;

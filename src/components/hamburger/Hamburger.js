@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 
 //store
 import { AppContext } from "../../store/store";
@@ -8,6 +7,7 @@ import { AppContext } from "../../store/store";
 import { BsGithub } from "react-icons/bs";
 
 //styles
+import styled from "styled-components";
 import {
   Nav,
   AnimatedDivs,
@@ -140,7 +140,7 @@ const Hamburger = () => {
       </Footer>
     </Nav>
   ) : (
-    ""
+    <div></div>
   );
 };
 

@@ -1,10 +1,25 @@
 import React, { useState, useEffect, useContext, memo } from "react";
-import { index } from "../../api";
-import styled from "styled-components";
+
+//helper
 import BannerRowCenter from "../helper/BannerGenerator";
+
+//store
 import { AppContext } from "../../store/store";
-import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
+import { index } from "../../api";
+
+//icons
 import { BsImage } from "react-icons/bs";
+
+//styles
+import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
+import {
+  Section,
+  DivContainer,
+  HeaderSpacer,
+  ImgSpacer,
+  Img,
+  ImgInformation
+} from "../styles/projects.style";
 
 const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
@@ -96,104 +111,3 @@ const Projects = () => {
 };
 
 export default memo(Projects);
-
-const ImgInformation = styled.div`
-  @media screen and (min-width: 1000px) {
-    background-color: ${({ theme }) => theme.darkThemeColor};
-    width: 50vmin;
-    height: 20vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20vmin;
-    border-radius: 20px;
-    color: ${({ theme }) => theme.darkThemeBackground};
-
-    &.hide {
-      opacity: 0;
-    }
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-
-const ImgSpacer = styled.div`
-  @media screen and (min-width: 1000px) {
-    overflow-x: hidden;
-    position: fixed;
-    transition: 100ms linear all;
-    bottom: 3.5vmin;
-    left: 3.5vmin;
-    z-index: 1001;
-    pointer-events: none;
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-const Img = styled.img`
-  width: 90vmin;
-  object-fit: contain;
-  transition: 100ms linear all;
-  border-radius: 15px;
-
-  &.hide {
-    opacity: 0;
-  }
-
-  &.open {
-    opacity: 1;
-  }
-`;
-
-const Section = styled.div`
-  @media screen and (min-width: 1000px) {
-    width: 90%;
-    margin: auto;
-  }
-
-  @media screen and (max-width: 1000px) {
-    width: 80%;
-    margin: auto;
-  }
-`;
-
-const DivContainer = styled.div`
-  color: ${(props) => props.theme.darkThemeColor};
-
-  text-align: left;
-  margin-bottom: 100px;
-  margin-top: 100px;
-
-  @media screen and (min-width: 1000px) {
-    width: 50%;
-  }
-
-  @media screen and (max-width: 1000px) {
-    width: 100%;
-  }
-`;
-
-const HeaderSpacer = styled.div`
-  a {
-    color: ${({ theme }) => theme.darkThemeColor};
-    text-decoration: none;
-  }
-
-  @media screen and (max-width: 700px) {
-    text-decoration: none;
-    display: block;
-    position: relative;
-    text-transform: uppercase;
-    padding-top: 2vmin;
-    padding-bottom: 2vmin;
-  }
-
-  @media screen and (min-width: 700px) {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-`;

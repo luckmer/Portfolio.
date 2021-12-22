@@ -3,12 +3,11 @@ import React, { useContext } from "react";
 //hooks
 import BannerRowCenter from "../helper/BannerGenerator";
 
-//styles
-import { TextAnimation } from "../styles/banner.styled";
-
 //store
 import { AppContext } from "../../store/store";
 
+//styles
+import { TextAnimation } from "../styles/banner.styled";
 import {
   Div1,
   MainDivHeader,
@@ -17,6 +16,8 @@ import {
   AnimationPanel,
   ContentContainer
 } from "../styles/content.styled";
+
+//components
 import Projects from "../projects/Projects";
 
 const Content = () => {
