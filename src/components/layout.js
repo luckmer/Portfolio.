@@ -18,6 +18,12 @@ import { AppContext } from "../store/store";
 //hook
 import UseWindowScrollHook from "../hooks/useWindowScroll";
 
+//framer-motion
+import { AnimatePresence } from "framer-motion";
+
+//animations
+import CounterBanner from "../animations/counterBanner";
+
 //theme
 
 const darkTheme = {
@@ -63,22 +69,33 @@ const Layout = ({ children }) => {
     scrollBar.style.width = `${scrollPercent}%`;
   }, [scrollTop]);
 
-  return (
-    <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
-      <ScrollBar ref={progress} />
-      <Helmet>
-        <style>
-          @import
-          url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
-        </style>
-      </Helmet>
-      <GlobalStyle />
-      <Hamburger />
-      <Nav />
-      <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  }, []);
 
-      <Main ref={ref}>{children}</Main>
-    </ThemeProvider>
+  return (
+    <AnimatePresence exitBeforeEnter>
+      <ThemeProvider
+        theme={state.switchTheme === false ? lightTheme : darkTheme}
+      >
+        <ScrollBar ref={progress} />
+        <CounterBanner />
+        <Helmet>
+          <style>
+            @import
+            url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+          </style>
+        </Helmet>
+        <GlobalStyle />
+        <Hamburger />
+        <Nav />
+        <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
+
+        <Main ref={ref}>{children}</Main>
+      </ThemeProvider>
+    </AnimatePresence>
   );
 };
 

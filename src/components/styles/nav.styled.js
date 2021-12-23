@@ -1,25 +1,20 @@
 import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
-
 0%{
   transform: rotate(0deg);
   margin-bottom: 0.56vmin;
 }
-
 
 20%{
   margin-bottom: -0;
   transform: rotate(0deg);
 }
 
-
 100%{
   margin-bottom: -0.1vmin;
   transform: rotate(-45deg);
 }
-
-
 `;
 
 const rotateB = keyframes`
@@ -132,13 +127,26 @@ export const Hamburger = styled.div`
     width: 5vmin;
     height: 5vmin;
     border-radius: 100%;
+
     span {
-      width: 4vmin;
-      height: 0.2vmin;
       display: block;
       background-color: ${(props) => props.theme.color};
-      margin: 0.56vmin;
       border-radius: 1vmin;
+    }
+    @media screen and (min-width: 700px) {
+      span {
+        width: 4vmin;
+        height: 0.2vmin;
+        margin: 0.56vmin;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      span {
+        width: 8vmin;
+        height: 0.2vmin;
+        margin: 0.8vmin;
+      }
     }
   }
 
@@ -218,22 +226,45 @@ export const Logo = styled.div`
   align-items: center;
   background: none;
 
-  a {
-    font-family: "Bakbak One", cursive;
-    font-size: 2.2vmin;
-    text-decoration: none;
-    font-weight: 800;
-    color: ${(props) => props.theme.color};
+  @media screen and (min-width: 700px) {
+    a {
+      font-family: "Bakbak One", cursive;
+      font-size: 2.2vmin;
+      text-decoration: none;
+      font-weight: 800;
+      color: ${(props) => props.theme.color};
+    }
+    span {
+      background-color: ${(props) => props.theme.dot};
+      height: 2vmin;
+      width: 2vmin;
+      margin: 0 0.4vmin;
+      border: none;
+      border-radius: 100%;
+      display: inline-block;
+      bottom: 2px;
+      overflow: hidden;
+    }
   }
-  span {
-    background-color: ${(props) => props.theme.dot};
-    height: 2vmin;
-    width: 2vmin;
-    margin: 0 0.4vmin;
-    border: none;
-    border-radius: 100%;
-    display: inline-block;
-    bottom: 2px;
-    overflow: hidden;
+
+  @media screen and (max-width: 700px) {
+    a {
+      font-family: "Bakbak One", cursive;
+      font-size: 4vmin;
+      text-decoration: none;
+      font-weight: 800;
+      color: ${(props) => props.theme.color};
+    }
+    span {
+      background-color: ${(props) => props.theme.dot};
+      height: 3vmin;
+      width: 3vmin;
+      margin: 0 0.7vmin;
+      border: none;
+      border-radius: 100%;
+      display: inline-block;
+      bottom: 2px;
+      overflow: hidden;
+    }
   }
 `;

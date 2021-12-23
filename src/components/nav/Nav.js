@@ -32,6 +32,10 @@ const Nav = () => {
   }, [type.mode, dispatch]);
 
   const handleControlHamburger = () => {
+    if (state.switchHamburgerStatus === true) {
+      document.body.style.overflow = "unset";
+    } else document.body.style.overflow = "hidden";
+
     dispatch({
       type: "HAMBURGER_STATUS",
       payload: !state.switchHamburgerStatus

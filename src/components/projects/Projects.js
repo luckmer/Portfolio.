@@ -8,7 +8,7 @@ import { AppContext } from "../../store/store";
 import { index } from "../../api";
 
 //icons
-import { BsImage } from "react-icons/bs";
+import { MdHideImage } from "react-icons/Md";
 
 //styles
 import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
@@ -97,7 +97,7 @@ const Projects = () => {
                         top: moving && mouse.y
                       }}
                     >
-                      <BsImage />
+                      <MdHideImage />
                     </ImgInformation>
                   )}
                 </ImgSpacer>

@@ -1,15 +1,28 @@
 import styled, { keyframes } from "styled-components";
 
 export const A = styled.a`
-  font-size: 2vmin;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   text-decoration: none;
   color: ${(props) => props.theme.darkThemeColor};
+
+  @media screen and (min-width: 700px) {
+    font-size: 2vmin;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 5vmin;
+  }
 `;
 
 export const FooterSpan = styled.span`
   color: ${(props) => props.theme.darkThemeColor};
-  font-size: 2vmin;
+  @media screen and (min-width: 700px) {
+    font-size: 2vmin;
+  }
+
+  @media screen and (max-width: 700px) {
+    font-size: 5vmin;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -164,7 +177,7 @@ export const CounterSpan = styled.span`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   display: inline-flex;
   font-weight: bold;
-  transform: translateY(-100%);
+  transform: translateY(0);
   &.rotate {
     animation: ${Open} 400ms both;
 

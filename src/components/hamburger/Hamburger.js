@@ -33,12 +33,6 @@ const Hamburger = () => {
 
   const hamburgerStatus = state.switchHamburgerStatus;
 
-  useEffect(() => {
-    if (hamburgerStatus) {
-      document.body.style.overflow = "hidden";
-    } else document.body.style.overflow = "unset";
-  }, [hamburgerStatus]);
-
   const pages = [
     { name: "home", number: "1" },
     { name: "github", number: "2", link: "https://github.com/luckmer" },
