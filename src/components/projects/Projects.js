@@ -8,7 +8,7 @@ import { AppContext } from "../../store/store";
 import { index } from "../../api";
 
 //icons
-import { MdHideImage } from "react-icons/Md";
+import { MdHideImage } from "react-icons/md";
 
 //styles
 import { HideArrow, Span, SpanFlex, Li } from "../styles/hamburger.styles";
