@@ -69,11 +69,10 @@ const Layout = ({ children }) => {
     scrollBar.style.width = `${scrollPercent}%`;
   }, [scrollTop]);
 
-  useEffect(() => {
-    window.onbeforeunload = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-  }, []);
+  useEffect(
+    () => (window.onbeforeunload = () => window.scrollTo({ top: 0 })),
+    []
+  );
 
   return (
     <AnimatePresence exitBeforeEnter>
@@ -92,7 +91,6 @@ const Layout = ({ children }) => {
         <Hamburger />
         <Nav />
         <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
-
         <Main ref={ref}>{children}</Main>
       </ThemeProvider>
     </AnimatePresence>

@@ -9,7 +9,7 @@ export const ImgInformation = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 20vmin;
-    border-radius: 20px;
+    border-radius: 2vmin;
     color: ${({ theme }) => theme.darkThemeBackground};
 
     &.hide {
@@ -39,7 +39,7 @@ export const Img = styled.img`
   width: 90vmin;
   object-fit: contain;
   transition: 100ms linear all;
-  border-radius: 15px;
+  border-radius: 2vmin;
 
   &.hide {
     opacity: 0;
@@ -47,7 +47,6 @@ export const Img = styled.img`
 
   &.open {
     transform: translate3d(0, 0, 0);
-
     opacity: 1;
   }
 `;
@@ -66,8 +65,8 @@ export const DivContainer = styled.div`
   color: ${(props) => props.theme.darkThemeColor};
 
   text-align: left;
-  margin-bottom: 100px;
-  margin-top: 100px;
+  margin-bottom: 20vmin;
+  margin-top: 20vmin;
 
   @media screen and (min-width: 1000px) {
     width: 50%;
@@ -93,7 +92,7 @@ export const HeaderSpacer = styled.div`
   }
 
   @media screen and (min-width: 700px) {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 5vmin;
+    padding-bottom: 5vmin;
   }
 `;

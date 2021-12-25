@@ -58,7 +58,7 @@ export const AnimationPanel = styled.div`
   border-top: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
   border-bottom: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
   @media screen and (min-width: 700px) {
-    margin: 200px 0;
+    margin: 20vmin 0;
   }
 
   @media screen and (max-width: 700px) {
@@ -68,14 +68,14 @@ export const AnimationPanel = styled.div`
 `;
 
 export const Div1 = styled.div`
-  margin-bottom: 200px;
+  margin-bottom: 20vmin;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
   @media screen and (min-width: 700px) {
-    padding-top: 200px;
+    padding-top: 20vmin;
   }
 `;
 

@@ -79,7 +79,6 @@ const CounterBanner = () => {
       },
 
       onComplete: () => {
-        imgNode.classList.remove("test");
         imgNode.classList.add("animate");
       }
     });
@@ -89,7 +88,7 @@ const CounterBanner = () => {
       delay: 0.5,
 
       onUpdate(value) {
-        node.textContent = value.toFixed(0);
+        node.textContent = `${value.toFixed(0)}%`;
       },
 
       onComplete: () => {
@@ -136,11 +135,12 @@ const CounterBanner = () => {
       </CounterPanel>
       <MainSlicer variants={variants}>
         <DivSlicer
-          onAnimationStart={() => onStart()}
           custom={3.4}
           animate="visible"
           variants={variants}
+          onAnimationStart={() => onStart()}
         />
+
         <DivSlicer custom={3.45} animate="visible" variants={variants} />
         <DivSlicer custom={3.5} animate="visible" variants={variants} />
         <DivSlicer custom={3.55} animate="visible" variants={variants} />
@@ -158,8 +158,8 @@ const CounterBanner = () => {
 export default CounterBanner;
 
 const CounterDiv = styled.div`
-  width: 40vmin;
-  height: 40vmin;
+  width: 45vmin;
+  height: 45vmin;
   overflow: hidden;
   position: relative;
 
@@ -180,7 +180,7 @@ const Img = styled(motion.img)`
   margin: auto;
 
   &.test {
-    animation: ${ShowImg} 500ms linear forwards;
+    animation: ${ShowImg} 1000ms linear forwards;
   }
 
   &.animate {
@@ -196,13 +196,14 @@ const P = styled(motion.p)`
   color: ${(props) => props.theme.darkThemeBackground};
   height: 100%;
   animation: ${ShowP} 500ms linear forwards;
+
   &.animate {
     animation: ${hideP} 500ms linear forwards;
   }
 `;
 
 const DivP = styled.div`
-  width: 20vmin;
+  width: 25vmin;
   height: 10vmin;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   overflow: hidden;

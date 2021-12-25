@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { motion } from "framer-motion";
 
 const rotate = keyframes`
 0%{
@@ -130,7 +131,10 @@ export const Hamburger = styled.div`
 
     span {
       display: block;
-      background-color: ${(props) => props.theme.color};
+      background-color: ${(props) =>
+        props.color === "true"
+          ? props.theme.darkThemeBackground
+          : props.theme.darkThemeColor};
       border-radius: 1vmin;
     }
     @media screen and (min-width: 700px) {
@@ -179,7 +183,7 @@ export const Hamburger = styled.div`
   }
 `;
 
-export const NavBar = styled.nav`
+export const NavBar = styled(motion.nav)`
   height: 0;
   width: 100%;
   position: fixed;
@@ -231,8 +235,13 @@ export const Logo = styled.div`
       font-family: "Bakbak One", cursive;
       font-size: 2.2vmin;
       text-decoration: none;
+      transition: all 1000ms ease;
+
       font-weight: 800;
-      color: ${(props) => props.theme.color};
+      color: ${(props) =>
+        props.color === "true"
+          ? props.theme.darkThemeBackground
+          : props.theme.darkThemeColor};
     }
     span {
       background-color: ${(props) => props.theme.dot};

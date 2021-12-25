@@ -9,26 +9,41 @@ import { BsGithub } from "react-icons/bs";
 //styles
 import styled from "styled-components";
 import {
-  Nav,
+  DivCounterSpacer,
   AnimatedDivs,
-  NavDivs,
+  CounterSpan,
+  FooterSpan,
+  HideArrow,
+  SpanFlex,
   Content,
+  NavDivs,
+  Footer,
+  Span,
+  Nav,
   Ul,
   Li,
-  SpanFlex,
-  HideArrow,
-  Span,
-  Footer,
-  FooterSpan,
-  A,
-  CounterSpan,
-  DivCounterSpacer
+  A
 } from "../styles/hamburger.styles";
 
+//animations
+import { motion } from "framer-motion";
+import {
+  projectVariants,
+  numberVariant,
+  footerVariant,
+  arrowVariant,
+  navVariant,
+  variants
+} from "../../animations/variants";
+
 const Hamburger = () => {
-  const { state, dispatch, functions } = useContext(AppContext);
   const [rotate, setRotate] = useState({ text: "", number: "" });
+  const [animationStatus, setAnimationStatus] = useState(false);
   const [pathLocation, setPathLocation] = useState("");
+  const [textStatus, setTextStatus] = useState("");
+
+  const { state, dispatch, functions } = useContext(AppContext);
+
   const { handleHoverCursor, handleOutMouse } = functions;
 
   const hamburgerStatus = state.switchHamburgerStatus;
@@ -65,16 +80,59 @@ const Hamburger = () => {
       ? "rotate"
       : "out";
 
-  return hamburgerStatus ? (
-    <Nav>
-      <AnimatedDivs>
-        <NavDivs></NavDivs>
-        <NavDivs></NavDivs>
-        <NavDivs></NavDivs>
-        <NavDivs></NavDivs>
+  const handleAnimationEnd = () => {
+    setAnimationStatus(true);
+  };
+
+  const handleAnimationStart = () => {
+    setAnimationStatus(false);
+  };
+
+  const handleTextStart = (status) => {
+    setTextStatus(status);
+  };
+
+  return (
+    <Nav
+      animate={
+        hamburgerStatus ? "visible" : textStatus !== "" ? textStatus : "hidden"
+      }
+      variants={navVariant}
+    >
+      <AnimatedDivs
+        initial={false}
+        animate={
+          hamburgerStatus
+            ? "visible"
+            : textStatus !== ""
+            ? textStatus
+            : "hidden"
+        }
+        onAnimationStart={() => handleAnimationStart()}
+      >
+        <NavDivs custom={0.02} variants={variants}></NavDivs>
+        <NavDivs custom={0.08} variants={variants}></NavDivs>
+        <NavDivs custom={0.16} variants={variants}></NavDivs>
+
+        <NavDivs
+          custom={0.24}
+          variants={variants}
+          onAnimationComplete={() => handleAnimationEnd()}
+        ></NavDivs>
       </AnimatedDivs>
       <Content>
-        <Ul>
+        <Ul
+          initial={false}
+          animate={
+            hamburgerStatus
+              ? animationStatus
+                ? "visible"
+                : "hidden"
+              : "hidden"
+          }
+          onAnimationStart={() => handleTextStart("visible")}
+          onAnimationComplete={() => handleTextStart("hidden")}
+        >
           {pages.map((el, i) => {
             const text = el.name;
             const number = el.number;
@@ -86,16 +144,26 @@ const Hamburger = () => {
                   onMouseEnter={() => handleMouseOver(text, number)}
                   onMouseLeave={handleMouseOut}
                 >
-                  <HideArrow className={name(text)}>&rArr;</HideArrow>
+                  <HideArrow className={name(text)} variants={arrowVariant}>
+                    <HideArrow className={name(text)}>&rArr;</HideArrow>
+                  </HideArrow>
                   {[...text].map((el, i) =>
                     link ? (
-                      <FlexDiv key={i}>
+                      <FlexDiv
+                        key={i}
+                        custom={Math.abs(i / 20)}
+                        variants={projectVariants}
+                      >
                         <Span className={rotate.text === text ? "rotate" : ""}>
                           <a href="https://github.com/luckmer">{el}</a>
                         </Span>
                       </FlexDiv>
                     ) : (
-                      <FlexDiv key={i}>
+                      <FlexDiv
+                        key={i}
+                        custom={Math.abs(i / 20)}
+                        variants={projectVariants}
+                      >
                         <Span
                           className={rotate.text === text ? "rotate" : "out"}
                         >
@@ -105,16 +173,23 @@ const Hamburger = () => {
                     )
                   )}
                 </SpanFlex>
-                <DivCounterSpacer>
-                  <CounterSpan>0</CounterSpan>
-                  <CounterSpan className={name(text)}>{number}</CounterSpan>
-                </DivCounterSpacer>
+                <TestDiv>
+                  <DivCounterSpacer variants={numberVariant}>
+                    <CounterSpan>0</CounterSpan>
+                    <CounterSpan className={name(text)}>{number}</CounterSpan>
+                  </DivCounterSpacer>
+                </TestDiv>
               </Li>
             );
           })}
         </Ul>
       </Content>
-      <Footer>
+      <Footer
+        animate={
+          hamburgerStatus ? (animationStatus ? "visible" : "hidden") : "hidden"
+        }
+        variants={footerVariant}
+      >
         <div>
           <FooterSpan>2021</FooterSpan>
         </div>
@@ -133,13 +208,19 @@ const Hamburger = () => {
         <div></div>
       </Footer>
     </Nav>
-  ) : (
-    <div></div>
   );
 };
 
 export default Hamburger;
 
-const FlexDiv = styled.div`
+const FlexDiv = styled(motion.div)`
   display: inline-flex;
+  position: relative;
+`;
+
+const TestDiv = styled(motion.div)`
+  position: absolute;
+  right: 3vmin;
+  bottom: 3vmin;
+  overflow-y: hidden;
 `;

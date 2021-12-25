@@ -73,7 +73,10 @@ const Projects = () => {
                       &rArr;
                     </HideArrow>
                     <a href={el.link}>
-                      <Span className={entered === el.name ? "rotate" : ""}>
+                      <Span
+                        className={entered === el.name ? "rotate" : ""}
+                        changeColor={true}
+                      >
                         {el.name}
                       </Span>
                     </a>

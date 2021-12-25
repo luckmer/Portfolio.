@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef, useState } from "react";
 
 //helper
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -18,12 +18,27 @@ import {
   TextAnimation,
   BannerMain,
   Canvas,
-  ScrollDown
+  ScrollDown,
+  BannerP
 } from "../styles/banner.styled";
+const textTransition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+const variants = {
+  visible: (custom) => ({
+    top: 0,
+    transition: { ...textTransition, delay: custom }
+  }),
+
+  hidden: (custom) => ({
+    top: "40vmin",
+    transition: { ...textTransition, delay: custom }
+  })
+};
 
 const Banner = () => {
+  const [playAnimation, setPlayAnimation] = useState(false);
   const { state, functions } = useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
+
   const ref = useRef(null);
   const size = useWindowSize();
 
@@ -53,6 +68,18 @@ const Banner = () => {
     }
   }, [size.width, size.height, state.switchTheme, size]);
 
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      setPlayAnimation(false);
+    };
+
+    setTimeout(() => {
+      setPlayAnimation(true);
+    }, 4200);
+  }, []);
+
+  const textScroll = [..."MORE"];
+
   return (
     <BannerMain>
       <TextAnimation>
@@ -68,7 +95,18 @@ const Banner = () => {
         onMouseEnter={() => handleHoverCursor()}
         onMouseLeave={handleOutMouse}
       />
-      <ScrollDown>MORE</ScrollDown>
+      <ScrollDown>
+        {textScroll.map((el, i) => (
+          <BannerP
+            key={i}
+            animate={playAnimation ? "visible" : "hidden"}
+            custom={Math.abs(i / 6)}
+            variants={variants}
+          >
+            {el}
+          </BannerP>
+        ))}
+      </ScrollDown>
     </BannerMain>
   );
 };

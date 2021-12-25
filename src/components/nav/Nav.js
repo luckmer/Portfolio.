@@ -7,6 +7,9 @@ import { NavBar, Container, Flex, Logo, Hamburger } from "../styles/nav.styled";
 //store
 import { AppContext } from "../../store/store";
 
+//animations
+import { transition } from "../../animations";
+
 const Nav = () => {
   const [type, setType] = useState({ mode: "light" });
   const { dispatch, functions, state } = useContext(AppContext);
@@ -42,11 +45,19 @@ const Nav = () => {
     });
   };
 
+  const hamburgerStatus = state.switchHamburgerStatus;
+
   return (
-    <NavBar>
+    <NavBar
+      initial={{ top: "0vmin" }}
+      animate={{
+        top: "7vmin",
+        transition: { delay: 4.1, duration: 1, ...transition }
+      }}
+    >
       <Container>
         <Flex>
-          <Logo>
+          <Logo color={hamburgerStatus.toString()}>
             <Link to="/">PI</Link>
             <span
               onClick={toggleChange}
@@ -62,6 +73,7 @@ const Nav = () => {
             <Link to="/">TR</Link>
           </Logo>
           <Hamburger
+            color={hamburgerStatus.toString()}
             className={
               state.switchHamburgerStatus ? "animateRotate" : "endAnimateRotate"
             }

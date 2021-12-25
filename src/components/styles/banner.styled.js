@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { motion } from "framer-motion";
 
 const rotate = keyframes`
 0% {
@@ -55,6 +56,7 @@ export const LettersSpan = styled(LetterContainer)`
 
 export const Speed = styled(LetterContainer)`
   animation: ${rotate} 8s linear infinite;
+  transition: all 1000ms ease !important;
 
   p {
     -webkit-text-fill-color: ${(props) => props.theme.darkThemeBackground};
@@ -69,33 +71,15 @@ export const TextSpped = styled.span`
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   height: 100%;
-  padding: 0 10vw;
+  padding: 0 10vmin;
   display: block;
   white-space: nowrap;
 
   p {
+    transition: all 500ms ease !important;
     font-weight: bold;
     color: ${(props) => props.theme.dot};
-    -webkit-transition: color 500ms linear !important;
-    -ms-transition: color 500ms linear !important;
-    transition: color 500ms linear !important;
-  }
-
-  @media screen and (min-width: 1000px) {
-    p {
-      font-size: 2vmin;
-    }
-  }
-
-  @media screen and (max-width: 1000px) {
-    p {
-      font-size: 2.7vmin;
-    }
-  }
-  @media screen and (max-width: 700px) {
-    p {
-      font-size: 14px;
-    }
+    font-size: 2vmin;
   }
 `;
 
@@ -115,6 +99,7 @@ export const BannerContainer = styled.div`
 `;
 
 export const BannerMain = styled.section`
+transition: all 500ms ease !important;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -150,14 +135,26 @@ export const TextAnimation = styled.div`
   display: flex;
 `;
 
-export const ScrollDown = styled.h1`
+export const ScrollDown = styled(motion.div)`
   position: absolute;
-  bottom: -10px;
-  left: -5px;
-  font-size: 28vmin;
-  line-height: 0.67;
+  bottom: 0;
+  left: 1vmin;
   pointer-events: none;
   z-index: 999;
   color: ${(props) => props.theme.color};
   font-family: sans-serif;
+  display: flex;
+  white-space nowrap;
+  overflow-y:hidden;
+  height: 20vmin;
+  align-items: flex-end;
+
+  
+`;
+
+export const BannerP = styled(motion.p)`
+  font-size: 28vmin;
+  line-height: 0.67;
+
+  position: relative;
 `;

@@ -35,7 +35,7 @@ const Cursor = () => {
     <CursorStyle
       ref={ref}
       className={bump ? "bump" : projectsOn ? "hexagon" : ""}
-    ></CursorStyle>
+    />
   );
 };
 
