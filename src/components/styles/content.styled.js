@@ -82,7 +82,7 @@ export const Div1 = styled.div`
 export const MainDivHeader = styled.div`
   margin: 10vw 0;
   width: 100%;
-  text-align: center;
+  text-align: inherit;
   color: ${(props) => props.theme.darkThemeColor};
   h2 {
     margin: auto;
