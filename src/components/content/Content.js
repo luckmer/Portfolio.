@@ -112,8 +112,8 @@ const Content = () => {
           >
             Design enthusiast
           </span>
-          .<br /> I started my career in 2020 starting with a simple application
-          called.
+          .<br /> I started my career in June 2020 starting with a simple
+          application called.
           <br />
           <span
             tabIndex={0}
