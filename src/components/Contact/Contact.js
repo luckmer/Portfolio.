@@ -26,18 +26,28 @@ import { footerVariant, ContactVariant } from "../../animations/variants";
 const Contact = () => {
   const { functions } = useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
-
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-  const contact = useAnimation();
   const [mainContact, inContactView] = useInView();
+  const contact = useAnimation();
+  const ref = React.useRef();
+
+  const scrollToTop = React.useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
-    inContactView && contact.start("visible");
+    inContactView ? contact.start("visible") : contact.start("hidden");
   }, [contact, inContactView]);
 
+  const setRefs = React.useCallback(
+    (node) => {
+      ref.current = node;
+      mainContact(node);
+    },
+    [mainContact]
+  );
+
   return (
-    <Footer ref={mainContact}>
+    <Footer ref={setRefs}>
       <H3 variants={footerVariant} animate={contact} initial="hidden">
         GET IN TOUCH
       </H3>
@@ -84,7 +94,7 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default React.memo(Contact);
 
 const HeaderDiv = styled.div`
   display: flex;

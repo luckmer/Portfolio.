@@ -78,7 +78,7 @@ export const TextSpped = styled.span`
   p {
     transition: all 500ms ease !important;
     font-weight: bold;
-    color: ${(props) => props.theme.dot};
+    color: #d0503e;
     font-size: 2vmin;
   }
 `;
@@ -155,6 +155,6 @@ export const ScrollDown = styled(motion.div)`
 export const BannerP = styled(motion.p)`
   font-size: 28vmin;
   line-height: 0.67;
-
+  font-family: "Bakbak One", cursive;
   position: relative;
 `;

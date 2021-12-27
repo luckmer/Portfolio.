@@ -39,7 +39,7 @@ const Cursor = () => {
   );
 };
 
-export default Cursor;
+export default React.memo(Cursor);
 
 const CursorStyle = styled.div`
   position: fixed;
