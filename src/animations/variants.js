@@ -12,6 +12,18 @@ export const variants = {
   })
 };
 
+export const Bannervariant = {
+  visible: (custom) => ({
+    top: 0,
+    transition: { ...textTransition, delay: custom }
+  }),
+
+  hidden: (custom) => ({
+    top: "40vmin",
+    transition: { ...textTransition, delay: custom }
+  })
+};
+
 export const projectVariants = {
   visible: (custom) => ({
     top: 0,
@@ -24,6 +36,17 @@ export const projectVariants = {
   })
 };
 
+export const squareVariants = {
+  visible: {
+    top: "0vmin",
+    transition: { duration: 1.6, ease: [0.6, 0.01, -0.05, 0.9] }
+  },
+  hidden: {
+    top: "20vmin",
+    transition: { duration: 1.6, ease: [0.6, 0.01, -0.05, 0.9] }
+  }
+};
+
 export const arrowVariant = {
   visible: () => ({
     left: 0,
@@ -33,6 +56,32 @@ export const arrowVariant = {
   hidden: () => ({
     left: "-15vmin",
     transition: { ease: [0.6, 0.01, -0.05, 0.9] }
+  })
+};
+
+export const ContactVariant = {
+  visible: (custom) => ({
+    top: 0,
+    transition: { duration: 1, ease: [0.6, 0.01, -0.05, 0.9], delay: custom }
+  }),
+
+  hidden: (custom) => ({
+    top: "30vmin",
+    transition: { duration: 1, ease: [0.6, 0.01, -0.05, 0.9], delay: custom }
+  })
+};
+
+export const TextVariant = {
+  visible: (custom) => ({
+    top: 0,
+    opacity: 1,
+    transition: { duration: 1, ease: [0.6, 0.01, -0.05, 0.9], delay: custom }
+  }),
+
+  hidden: (custom) => ({
+    top: "30vmin",
+    opacity: 0,
+    transition: { duration: 1, ease: [0.6, 0.01, -0.05, 0.9], delay: custom }
   })
 };
 
@@ -66,13 +115,14 @@ export const navVariant = {
 export const footerVariant = {
   visible: () => ({
     opacity: 1,
-    transition: { ease: [0.6, 0.01, -0.05, 0.9] }
+    transition: { ease: [0.6, 0.01, -0.05, 0.9], delay: 0.3 }
   }),
 
   hidden: () => ({
     opacity: 0,
     transition: {
-      ease: [1, 0.01, -0.05, 0.9]
+      ease: [1, 0.01, -0.05, 0.9],
+      delay: 0.3
     }
   })
 };

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const UnderLine = styled.div`
   width: 100%;
@@ -26,7 +27,7 @@ export const Footer = styled.footer`
   text-align: center;
 `;
 
-export const H3 = styled.h3`
+export const H3 = styled(motion.h3)`
   font-size: 5vmin;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   color: ${(props) => props.theme.darkThemeColor};
@@ -44,13 +45,18 @@ export const ContactPanel = styled.div`
   }
 `;
 
-export const H1 = styled.h1`
-  @media screen and (min-width: 1226px) {
-    font-size: 28vmin;
+export const H1 = styled(motion.h1)`
+  position: relative;
+  @media screen and (min-width: 1348px) {
+    font-size: 26vmin;
   }
 
-  @media screen and (max-width: 1226px) {
+  @media screen and (max-width: 1348px) {
     font-size: 20vmin;
+  }
+
+  @media screen and (max-width: 1008px) {
+    font-size: 17vmin;
   }
 
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
@@ -64,7 +70,7 @@ export const H1 = styled.h1`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   font-size: calc((60 / 31) * 1.5vmin);
   border: none;

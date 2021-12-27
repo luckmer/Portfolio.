@@ -80,7 +80,6 @@ const Layout = ({ children }) => {
         theme={state.switchTheme === false ? lightTheme : darkTheme}
       >
         <ScrollBar ref={progress} />
-        <CounterBanner />
         <Helmet>
           <style>
             @import

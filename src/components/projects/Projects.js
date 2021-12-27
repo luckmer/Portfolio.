@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, memo } from "react";
+import React, { useState, useContext, memo } from "react";
 
 //helper
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -21,21 +21,8 @@ import {
   ImgInformation
 } from "../styles/projects.style";
 
-const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = useState({ x: null, y: null });
-
-  const updateMousePosition = (ev) => {
-    setMousePosition({ x: ev.clientX, y: ev.clientY });
-  };
-
-  useEffect(() => {
-    window.addEventListener("mousemove", updateMousePosition);
-
-    return () => window.removeEventListener("mousemove", updateMousePosition);
-  }, []);
-
-  return mousePosition;
-};
+//hooks
+import useMousePosition from "../../hooks/useMousePosition";
 
 const Projects = () => {
   const { dispatch } = useContext(AppContext);

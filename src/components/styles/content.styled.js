@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const CircleSpacer = styled.div`
   display: flex;
@@ -26,9 +27,36 @@ export const Circle = styled.img`
   }
 `;
 
-export const H2 = styled.h2`
+export const H = styled(motion.div)`
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
   font-size: 9.7vw;
   width: 80%;
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  color: pink;
+  font-weight: bolder;
+  font-family: "Bakbak One", cursive;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+
+  @media screen and (max-width: 700px) {
+    white-space: nowrap;
+  }
+
+  h2 {
+    position: relative;
+  }
+`;
+export const H2 = styled(motion.h2)`
+  font-size: 9.7vw;
+  width: 80%;
+  position: relative;
+  overflow: hidden;
   margin: auto;
   color: pink;
   font-weight: bolder;
@@ -43,9 +71,13 @@ export const H2 = styled.h2`
   }
 `;
 
-export const Small = styled.small`
+export const Small = styled(motion.small)`
   padding-right: 20px;
   font-size: 6vmin;
+  position: relative;
+  color: pink;
+  font-weight: bolder;
+  font-family: "Bakbak One", cursive;
 `;
 
 export const ContentContainer = styled.div`
@@ -79,19 +111,17 @@ export const Div1 = styled.div`
   }
 `;
 
-export const MainDivHeader = styled.div`
+export const MainDivHeader = styled(motion.div)`
   margin: 10vw 0;
   width: 100%;
   text-align: inherit;
+  overflow: hidden;
+  position: relative;
   color: ${(props) => props.theme.darkThemeColor};
-  h2 {
-    margin: auto;
-    font-size: 8.5vw;
-    width: 80%;
-  }
 
   p {
     margin: auto;
+    position: relative;
     width: 80%;
     font-family: "Bakbak One", cursive;
     @media screen and (max-width: 3372px) {

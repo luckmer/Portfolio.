@@ -1,61 +1,27 @@
-import React, { useRef, useEffect, useContext } from "react";
+import React, { useRef, useEffect, useContext, Fragment } from "react";
 
 //img
 import LoadingImg from "../images/loading.png";
 import lightLoadingImg from "../images/white_loading.png";
 //styles
-import styled, { keyframes } from "styled-components";
 
 //framer-motion
-import { motion, animate } from "framer-motion";
+import { animate } from "framer-motion";
 import { AppContext } from "../store/store";
 
-const transition = { duration: 1.4, ease: [0.6, 0.01, -0.05, 0.9] };
+//styles
+import {
+  CounterPanel,
+  CounterDiv,
+  Img,
+  DivP,
+  P,
+  MainSlicer,
+  DivSlicer
+} from "./styles/counterBanner.styled";
 
-const hideImg = keyframes`
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(0.9);
-  }
-
-  100%{
-    opacity:0;
-    transform:scale(0.9);
-  }
-`;
-
-const ShowImg = keyframes`
-  from{
-    opacity:0;
-  }
-
-  to{
-    opacity:1;
-  }
-`;
-
-const ShowP = keyframes`
-  from{
-    top:100%
-  }
-
-  to{
-    top:0;
-  }
-`;
-
-const hideP = keyframes`
-from{
-  top:0%
-}
-
-to{
-  top:100%;
-}
-`;
+//animations
+import { transition } from "./index";
 
 const CounterBanner = () => {
   const { state } = useContext(AppContext);
@@ -120,7 +86,7 @@ const CounterBanner = () => {
   const imgOption = state.switchTheme;
 
   return (
-    <>
+    <Fragment>
       <CounterPanel custom={3.6} animate="visible" variants={variants}>
         <CounterDiv>
           <Img
@@ -151,93 +117,8 @@ const CounterBanner = () => {
           onAnimationComplete={() => handleAnimationEnd()}
         />
       </MainSlicer>
-    </>
+    </Fragment>
   );
 };
 
 export default CounterBanner;
-
-const CounterDiv = styled.div`
-  width: 45vmin;
-  height: 45vmin;
-  overflow: hidden;
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Img = styled(motion.img)`
-  width: 40vmin;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  animation-delay: 2s;
-  margin: auto;
-
-  &.test {
-    animation: ${ShowImg} 1000ms linear forwards;
-  }
-
-  &.animate {
-    animation: ${hideImg} 500ms linear forwards;
-  }
-`;
-
-const P = styled(motion.p)`
-  position: absolute;
-  top: 0;
-  font-size: 10vmin;
-  width: 100%;
-  color: ${(props) => props.theme.darkThemeBackground};
-  height: 100%;
-  animation: ${ShowP} 500ms linear forwards;
-
-  &.animate {
-    animation: ${hideP} 500ms linear forwards;
-  }
-`;
-
-const DivP = styled.div`
-  width: 25vmin;
-  height: 10vmin;
-  font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
-  overflow: hidden;
-  position: relative;
-
-  text-align: center;
-`;
-
-const CounterPanel = styled(motion.div)`
-  position: fixed;
-  z-index: 9999999;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-`;
-
-const DivSlicer = styled(motion.div)`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: ${(props) => props.theme.darkThemeColor};
-`;
-
-const MainSlicer = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999999;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
-`;

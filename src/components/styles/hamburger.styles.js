@@ -124,6 +124,7 @@ export const Span = styled.span`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   transition: all 500ms ease;
   a {
+    transition: all 500ms ease;
     color: ${(props) =>
       props.changeColor
         ? props.theme.darkThemeColor
@@ -200,11 +201,9 @@ export const CounterSpan = styled(motion.span)`
   display: inline-flex;
   font-weight: bold;
   transform: translateY(0);
-  background: ${(props) => props.theme.darkThemeColor};
-
+  background-color: ${(props) => props.theme.darkThemeColor};
   &.rotate {
     animation: ${Open} 400ms both;
-
     z-index: 999;
     transform: translateY(0);
   }

@@ -223,4 +223,5 @@ const TestDiv = styled(motion.div)`
   right: 3vmin;
   bottom: 3vmin;
   overflow-y: hidden;
+  transition: all 500ms ease;
 `;
