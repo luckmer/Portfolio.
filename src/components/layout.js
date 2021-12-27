@@ -52,7 +52,6 @@ const Layout = ({ children }) => {
   const { scrollTop } = UseWindowScrollHook();
   const darkStatus = state.switchTheme;
   const progress = useRef(null);
-  const ref = useRef(null);
 
   useEffect(() => {
     const scrollBar = progress.current;
@@ -80,6 +79,7 @@ const Layout = ({ children }) => {
         theme={state.switchTheme === false ? lightTheme : darkTheme}
       >
         <ScrollBar ref={progress} />
+        <CounterBanner />
         <Helmet>
           <style>
             @import
@@ -90,7 +90,7 @@ const Layout = ({ children }) => {
         <Hamburger />
         <Nav />
         <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
-        <Main ref={ref}>{children}</Main>
+        <Main>{children}</Main>
       </ThemeProvider>
     </AnimatePresence>
   );

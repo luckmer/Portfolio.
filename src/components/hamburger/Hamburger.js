@@ -92,6 +92,17 @@ const Hamburger = () => {
     setTextStatus(status);
   };
 
+  const handleCloseHamburger = (name) => {
+    if (name.toLowerCase() === "home") {
+      dispatch({
+        type: "HAMBURGER_STATUS",
+        payload: false
+      });
+      window.scrollTo({ top: 0 });
+    }
+    console.log(name);
+  };
+
   return (
     <Nav
       animate={
@@ -143,6 +154,7 @@ const Hamburger = () => {
                   className={rotate.text === text ? "rotate" : ""}
                   onMouseEnter={() => handleMouseOver(text, number)}
                   onMouseLeave={handleMouseOut}
+                  onClick={() => handleCloseHamburger(text)}
                 >
                   <HideArrow className={name(text)} variants={arrowVariant}>
                     <HideArrow className={name(text)}>&rArr;</HideArrow>

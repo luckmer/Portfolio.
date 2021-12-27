@@ -12,7 +12,6 @@ import {
   Div1,
   MainDivHeader,
   H,
-  H2,
   Small,
   AnimationPanel,
   ContentContainer
@@ -53,7 +52,7 @@ const Content = () => {
 
   useEffect(() => {
     inWorkView && work.start("visible");
-  }, [header, inWorkView]);
+  }, [work, inWorkView]);
 
   useEffect(() => {
     inContentView && content.start("visible");
@@ -128,16 +127,7 @@ const Content = () => {
           variants={TextVariant}
         >
           over time I began to create more advanced projects such as checkers,
-          chess each time trying to make the level of difficulty was &nbsp;
-          <span
-            tabIndex={0}
-            role="button"
-            onMouseEnter={() => handleHoverCursor()}
-            onMouseLeave={handleOutMouse}
-          >
-            lower
-          </span>
-          &nbsp; higher
+          chess each time trying to make the level of difficulty was higher
         </motion.p>
       </MainDivHeader>
       <AnimationPanel>

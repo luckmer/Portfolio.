@@ -24,6 +24,15 @@ import {
 //hooks
 import useMousePosition from "../../hooks/useMousePosition";
 
+function sliceIntoChunks(arr, chunkSize) {
+  const res = [];
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    const chunk = arr.slice(i, i + chunkSize);
+    res.push(chunk);
+  }
+  return res;
+}
+
 const Projects = () => {
   const { dispatch } = useContext(AppContext);
 
@@ -43,59 +52,67 @@ const Projects = () => {
     setMoving(false);
   };
 
+  const work = sliceIntoChunks(index, 2);
+
   return (
     <div>
-      {index.map((el, i) => {
-        return (
-          <Section key={i}>
-            <DivContainer>
-              <HeaderSpacer>
-                <Li key={i}>
-                  <SpanFlex
-                    className={entered === el.name ? "rotate" : ""}
-                    onMouseEnter={() => handleMouseEnter(el.name)}
-                    onMouseLeave={handleMouseOut}
-                  >
-                    <HideArrow className={entered === el.name ? "rotate" : ""}>
-                      &rArr;
-                    </HideArrow>
-                    <a href={el.link}>
-                      <Span
-                        className={entered === el.name ? "rotate" : ""}
-                        changeColor={true}
-                      >
-                        {el.name}
-                      </Span>
-                    </a>
-                  </SpanFlex>
-                </Li>
-                <div>
-                  <BannerRowCenter title={el.tech} speed={2} type={true} />
-                </div>
-                <ImgSpacer style={{ left: mouse.x, top: mouse.y }}>
-                  {el.img ? (
-                    <Img
-                      className={entered === el.name ? "open" : "hide"}
-                      src={el.img}
-                      alt=""
-                    />
-                  ) : (
-                    <ImgInformation
-                      className={entered === el.name ? "open" : "hide"}
-                      style={{
-                        left: moving && mouse.x,
-                        top: moving && mouse.y
-                      }}
+      {work.map((data, index) => (
+        <div key={index}>
+          {data.map((el, i) => (
+            <Section key={i}>
+              <DivContainer>
+                <HeaderSpacer>
+                  <Li>
+                    <SpanFlex
+                      className={entered === el.name ? "rotate" : ""}
+                      onMouseEnter={() => handleMouseEnter(el.name)}
+                      onMouseLeave={handleMouseOut}
                     >
-                      <MdHideImage />
-                    </ImgInformation>
-                  )}
-                </ImgSpacer>
-              </HeaderSpacer>
-            </DivContainer>
-          </Section>
-        );
-      })}
+                      <HideArrow
+                        changecolor={true.toString()}
+                        className={entered === el.name ? "rotate" : ""}
+                      >
+                        &rArr;
+                      </HideArrow>
+                      <a href={el.link}>
+                        <Span
+                          className={entered === el.name ? "rotate" : ""}
+                          changecolor={true}
+                          id={i}
+                        >
+                          {el.name}
+                        </Span>
+                      </a>
+                    </SpanFlex>
+                  </Li>
+                  <div>
+                    <BannerRowCenter title={el.tech} speed={2} type={true} />
+                  </div>
+                  <ImgSpacer style={{ left: mouse.x, top: mouse.y }}>
+                    {el.img ? (
+                      <Img
+                        className={entered === el.name ? "open" : "hide"}
+                        src={el.img}
+                        alt=""
+                      />
+                    ) : (
+                      <ImgInformation
+                        className={entered === el.name ? "open" : "hide"}
+                        style={{
+                          left: moving && mouse.x,
+                          top: moving && mouse.y
+                        }}
+                      >
+                        <MdHideImage />
+                      </ImgInformation>
+                    )}
+                  </ImgSpacer>
+                </HeaderSpacer>
+              </DivContainer>
+            </Section>
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

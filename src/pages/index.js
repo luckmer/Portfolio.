@@ -14,13 +14,17 @@ import Contact from "../components/Contact/Contact";
 //cursor
 import Cursor from "../cursor/Cursor";
 
+//pageinformator
+
 // markup
 const IndexPage = () => {
   return (
     <AppProvider>
       <Layout>
         <Cursor />
+        <Banner />
         <Content />
+        <Contact />
       </Layout>
     </AppProvider>
   );

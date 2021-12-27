@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   cursor:none;
 }
 
+
 body{
   background-color:${(props) => props.theme.darkThemeBackground};
 }

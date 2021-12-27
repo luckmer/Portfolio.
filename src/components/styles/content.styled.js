@@ -150,6 +150,11 @@ export const MainDivHeader = styled(motion.div)`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   margin-bottom: calc((36 / 31) * 1vmin);
 
+  &:nth-child(3) {
+    margin-top: calc((36 / 31) * 30vmin);
+    margin-bottom: calc((36 / 31) * 1vmin);
+  }
+
   @media screen and (min-width: 730px) {
     font-size: calc((60 / 31) * 1vmin);
   }

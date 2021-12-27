@@ -54,7 +54,10 @@ export const HideArrow = styled(motion.span)`
   opacity: 0;
   left: -15vmin;
   position: relative;
-  color: ${(props) => props.theme.darkThemeBackground};
+  color: ${(props) =>
+    props.changecolor === "true"
+      ? props.theme.darkThemeColor
+      : props.theme.darkThemeBackground};
 
   @media screen and (min-width: 700px) {
     &.out {
@@ -111,10 +114,9 @@ export const SpanFlex = styled(motion.div)`
   }
 `;
 
-//fix it
 export const Span = styled.span`
   color: ${(props) =>
-    props.changeColor
+    props.changecolor
       ? props.theme.darkThemeColor
       : props.theme.darkThemeBackground};
 
@@ -126,7 +128,7 @@ export const Span = styled.span`
   a {
     transition: all 500ms ease;
     color: ${(props) =>
-      props.changeColor
+      props.changecolor
         ? props.theme.darkThemeColor
         : props.theme.darkThemeBackground};
   }
