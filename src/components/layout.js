@@ -28,8 +28,8 @@ import CounterBanner from "../animations/counterBanner";
 
 const darkTheme = {
   background: "#646461",
-  color: "#fff",
-  dot: "pink",
+  color: "#f3efee",
+  dot: "#d0503e",
   change: "#646461",
   layoutBackground: "#646461",
   darkThemeBackground: "#0f0f0f",
@@ -80,6 +80,8 @@ const Layout = ({ children }) => {
       >
         <ScrollBar ref={progress} />
         <CounterBanner />
+        <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
+        <Hamburger />
         <Helmet>
           <style>
             @import
@@ -87,16 +89,15 @@ const Layout = ({ children }) => {
           </style>
         </Helmet>
         <GlobalStyle />
-        <Hamburger />
+
         <Nav />
-        <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
         <Main>{children}</Main>
       </ThemeProvider>
     </AnimatePresence>
   );
 };
 
-export default Layout;
+export default React.memo(Layout);
 
 const Main = styled.main`
   display: flex;
@@ -110,6 +111,6 @@ const ScrollBar = styled.div`
   top: 0;
   width: 0;
   height: 0.5vmin;
-  background: pink;
+  background: #d0503e;
   z-index: 999999;
 `;

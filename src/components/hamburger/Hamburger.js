@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 
 //store
 import { AppContext } from "../../store/store";
@@ -80,28 +80,31 @@ const Hamburger = () => {
       ? "rotate"
       : "out";
 
-  const handleAnimationEnd = () => {
+  const handleAnimationEnd = React.useCallback(() => {
     setAnimationStatus(true);
-  };
+  }, []);
 
-  const handleAnimationStart = () => {
+  const handleAnimationStart = React.useCallback(() => {
     setAnimationStatus(false);
-  };
+  }, []);
 
-  const handleTextStart = (status) => {
+  const handleTextStart = React.useCallback((status) => {
     setTextStatus(status);
-  };
+  }, []);
 
-  const handleCloseHamburger = (name) => {
-    if (name.toLowerCase() === "home") {
-      dispatch({
-        type: "HAMBURGER_STATUS",
-        payload: false
-      });
-      window.scrollTo({ top: 0 });
-    }
-    console.log(name);
-  };
+  const handleCloseHamburger = useCallback(
+    (name) => {
+      if (name.toLowerCase() === "home") {
+        dispatch({
+          type: "HAMBURGER_STATUS",
+          payload: false
+        });
+        window.scrollTo({ top: 0 });
+        document.body.style.overflow = "unset";
+      }
+    },
+    [dispatch]
+  );
 
   return (
     <Nav
@@ -223,7 +226,7 @@ const Hamburger = () => {
   );
 };
 
-export default Hamburger;
+export default React.memo(Hamburger);
 
 const FlexDiv = styled(motion.div)`
   display: inline-flex;

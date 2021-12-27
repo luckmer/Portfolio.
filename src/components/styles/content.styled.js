@@ -36,7 +36,7 @@ export const H = styled(motion.div)`
   position: relative;
   overflow: hidden;
   margin: auto;
-  color: pink;
+  color: #d0503e;
   font-weight: bolder;
   font-family: "Bakbak One", cursive;
 
@@ -58,7 +58,7 @@ export const H2 = styled(motion.h2)`
   position: relative;
   overflow: hidden;
   margin: auto;
-  color: pink;
+  color: #d0503e;
   font-weight: bolder;
   font-family: "Bakbak One", cursive;
 
@@ -75,7 +75,7 @@ export const Small = styled(motion.small)`
   padding-right: 20px;
   font-size: 6vmin;
   position: relative;
-  color: pink;
+  color: #d0503e;
   font-weight: bolder;
   font-family: "Bakbak One", cursive;
 `;
@@ -141,7 +141,7 @@ export const MainDivHeader = styled(motion.div)`
   span {
     font-style: italic;
     text-decoration: line-through;
-    color: lightsalmon;
+    color: #d0503e;
     &:hover {
       text-decoration: none;
     }

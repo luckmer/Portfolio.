@@ -54,4 +54,4 @@ const AnimatedLetters = ({ title, speed }) => {
   );
 };
 
-export default BannerRowCenter;
+export default React.memo(BannerRowCenter);

@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   -ms-transition: background-color 500ms linear;
   transition: background-color 500ms linear;
   cursor:none;
+  
 }
 
 

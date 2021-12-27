@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 
 //styles
@@ -11,30 +11,30 @@ import { AppContext } from "../../store/store";
 import { transition } from "../../animations";
 
 const Nav = () => {
-  const [type, setType] = useState({ mode: "light" });
-  const { dispatch, functions, state } = useContext(AppContext);
+  const [type, setType] = React.useState({ mode: "light" });
+  const { dispatch, functions, state } = React.useContext(AppContext);
   const { handleHoverCursor, handleOutMouse } = functions;
 
-  const Color = type.mode;
+  const Color = React.useMemo(() => type.mode, [type.mode]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const store = JSON.parse(localStorage.getItem("color"));
     if (store) setType(store);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem("color", JSON.stringify(type));
   }, [type]);
 
-  const toggleChange = () => {
+  const toggleChange = React.useCallback(() => {
     setType({ mode: Color === "light" ? "dark" : "light" });
-  };
+  }, [Color]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch({ type: "DARK_THEME", payload: type.mode === "dark" });
   }, [type.mode, dispatch]);
 
-  const handleControlHamburger = () => {
+  const handleControlHamburger = React.useCallback(() => {
     if (state.switchHamburgerStatus === true) {
       document.body.style.overflow = "unset";
     } else document.body.style.overflow = "hidden";
@@ -43,9 +43,12 @@ const Nav = () => {
       type: "HAMBURGER_STATUS",
       payload: !state.switchHamburgerStatus
     });
-  };
+  }, [dispatch, state.switchHamburgerStatus]);
 
-  const hamburgerStatus = state.switchHamburgerStatus;
+  const hamburgerStatus = React.useMemo(
+    () => state.switchHamburgerStatus,
+    [state.switchHamburgerStatus]
+  );
 
   return (
     <NavBar
@@ -65,7 +68,7 @@ const Nav = () => {
               styling="link"
               tabIndex={0}
               onKeyDown={toggleChange}
-              onMouseEnter={() => handleHoverCursor()}
+              onMouseEnter={handleHoverCursor}
               onMouseLeave={handleOutMouse}
             >
               .
@@ -77,7 +80,7 @@ const Nav = () => {
             className={
               state.switchHamburgerStatus ? "animateRotate" : "endAnimateRotate"
             }
-            onMouseEnter={() => handleHoverCursor()}
+            onMouseEnter={handleHoverCursor}
             onMouseLeave={handleOutMouse}
           >
             <button
@@ -95,4 +98,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default React.memo(Nav);

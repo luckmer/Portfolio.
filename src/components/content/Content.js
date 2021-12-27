@@ -47,19 +47,21 @@ const Content = () => {
   const [Mainwork, inWorkView] = useInView();
 
   useEffect(() => {
-    inHeaderView && header.start("visible");
+    inHeaderView ? header.start("visible") : header.start("hidden");
   }, [header, inHeaderView]);
 
   useEffect(() => {
-    inWorkView && work.start("visible");
+    inWorkView ? work.start("visible") : work.start("hidden");
   }, [work, inWorkView]);
 
   useEffect(() => {
-    inContentView && content.start("visible");
+    inContentView ? content.start("visible") : content.start("hidden");
   }, [content, inContentView]);
 
   useEffect(() => {
-    inDescriptionView && description.start("visible");
+    inDescriptionView
+      ? description.start("visible")
+      : description.start("hidden");
   }, [description, inDescriptionView]);
 
   return (
@@ -88,12 +90,16 @@ const Content = () => {
       </MainDivHeader>
       <MainDivHeader ref={MainContent}>
         <HideText>
-          <H2Spacer animate={header} initial="hidden" variants={ContactVariant}>
+          <H2Spacer
+            animate={content}
+            initial="hidden"
+            variants={ContactVariant}
+          >
             Hi, I'm Piotr
           </H2Spacer>
         </HideText>
         <motion.p
-          animate={header}
+          animate={content}
           custom={1}
           initial="hidden"
           variants={TextVariant}
@@ -162,7 +168,7 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default React.memo(Content);
 
 const RecentSlicer = styled.div`
   color: white;
@@ -185,7 +191,7 @@ const HeaderDiv = styled.div`
 
   h2 {
     position: relative;
-    color: pink;
+    color: #d0503e;
     font-weight: bolder;
     font-family: "Bakbak One", cursive;
   }
