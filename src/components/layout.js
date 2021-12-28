@@ -89,7 +89,6 @@ const Layout = ({ children }) => {
           </style>
         </Helmet>
         <GlobalStyle />
-
         <Nav />
         <Main>{children}</Main>
       </ThemeProvider>
