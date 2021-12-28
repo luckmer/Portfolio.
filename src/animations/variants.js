@@ -110,7 +110,6 @@ export const navVariant = {
 export const footerVariant = {
   visible: () => ({
     opacity: 1,
-    opacity: 1.6,
     transition: { ease: [0.6, 0.01, -0.05, 0.9], delay: 1 }
   }),
 
