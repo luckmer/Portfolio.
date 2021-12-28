@@ -39,7 +39,7 @@ const Cursor = () => {
     ) ||
     /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(mobile)
   ) {
-    return null;
+    return <div />;
   } else {
     return (
       <CursorStyle
