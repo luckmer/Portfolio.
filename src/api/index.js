@@ -1,28 +1,21 @@
-import tetris from "../images/tetris.png";
-import pac from "../images/pac.png";
-import note from "../images/note.png";
-import movie from "../images/movie.png";
-import chess from "../images/chess.png";
-import calendar from "../images/calendar.png";
-
 export const index = [
   {
     tech: "react  redux  styled-components",
     link: "https://github.com/luckmer/React-Calendar-Study",
     name: "calendar",
-    img: calendar
+    img: "https://i.imgur.com/v73bFnC.png"
   },
   {
     tech: "react  reduxapi  hooks  youtube  vimeoreact-redux  redux-thunk  react  strap  redux-toolkit",
     link: "https://github.com/luckmer/VideoApp",
     name: "video app",
-    img: movie
+    img: "https://imgur.com/I7dQJcv.png"
   },
   {
     tech: "javascript  css  html  typescript",
     link: "https://github.com/luckmer/Pac-Man.js",
     name: "pac man",
-    img: pac
+    img: "https://imgur.com/m3EMlc3.png"
   },
   {
     tech: "react  typescript  react-router-dom",
@@ -34,13 +27,13 @@ export const index = [
     tech: "react  styled-components  checkers",
     link: "https://github.com/luckmer/React_Chess",
     name: "chess",
-    img: chess
+    img: "https://i.imgur.com/kaTmHbj.png"
   },
   {
     tech: "react  redux  drag-and-drop  draft-js  styled-component",
     link: "https://github.com/luckmer/Note-App",
     name: "note app",
-    img: note
+    img: "https://imgur.com/sewzBO4.png"
   },
   {
     tech: "react  styled-components",
@@ -52,7 +45,7 @@ export const index = [
     tech: "webpack  html5  css3  images  ts  dist",
     link: "https://github.com/luckmer/tetris",
     name: "tetris",
-    img: tetris
+    img: "https://imgur.com/vm9l5AB.png"
   },
   {
     tech: "react  typescript  react-router-dom",
