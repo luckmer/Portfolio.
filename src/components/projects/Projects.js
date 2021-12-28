@@ -120,35 +120,35 @@ const Projects = () => {
 
   return (
     <div ref={workLocation}>
-      <Schema
+      <DisplaySchemaContent
         play={workZero}
         Ref={scheamaZero}
         index={1}
         data={work[0]}
         mousePanel={mousePanel}
       />
-      <Schema
+      <DisplaySchemaContent
         play={workOne}
         Ref={scheamaOne}
         index={2}
         data={work[1]}
         mousePanel={mousePanel}
       />
-      <Schema
+      <DisplaySchemaContent
         play={workTwo}
         Ref={schemaTwo}
         index={3}
         data={work[2]}
         mousePanel={mousePanel}
       />
-      <Schema
+      <DisplaySchemaContent
         play={workThree}
         Ref={schemaThree}
         index={4}
         data={work[3]}
         mousePanel={mousePanel}
       />
-      <Schema
+      <DisplaySchemaContent
         play={workFour}
         Ref={scheamaFour}
         index={5}
@@ -161,7 +161,7 @@ const Projects = () => {
 
 export default memo(Projects);
 
-const Schema = memo((props) => {
+const DisplaySchemaContent = memo((props) => {
   const { play, Ref, index, data, mousePanel } = props;
   const { Entered, handleMouseEnter, handleMouseOut } = mousePanel;
 
