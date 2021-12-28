@@ -1,9 +1,9 @@
-import tetris from "./images/tetris.png";
-import pac from "./images/pac.png";
-import note from "./images/note.png";
-import movie from "./images/movie.png";
-import chess from "./images/chess.png";
-import calendar from "./images/calendar.png";
+import tetris from "../images/tetris.png";
+import pac from "../images/pac.png";
+import note from "../images/note.png";
+import movie from "../images/movie.png";
+import chess from "../images/chess.png";
+import calendar from "../images/calendar.png";
 
 export const index = [
   {
