@@ -16,6 +16,7 @@ const Cursor = () => {
 
     const setFromEvent = (e) => {
       const { clientX, clientY } = e;
+      if (!mouse) return;
 
       mouse.style.left = `${clientX}px`;
       mouse.style.top = `${clientY}px`;
@@ -31,12 +32,22 @@ const Cursor = () => {
   const bump = state.switchCursorBump;
   const projectsOn = state.onProjects;
 
-  return (
-    <CursorStyle
-      ref={ref}
-      className={bump ? "bump" : projectsOn ? "hexagon" : ""}
-    />
-  );
+  const mobile = navigator.userAgent;
+  if (
+    /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+      mobile
+    ) ||
+    /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(mobile)
+  ) {
+    return null;
+  } else {
+    return (
+      <CursorStyle
+        ref={ref}
+        className={bump ? "bump" : projectsOn ? "hexagon" : ""}
+      />
+    );
+  }
 };
 
 export default React.memo(Cursor);

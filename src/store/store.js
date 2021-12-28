@@ -1,55 +1,26 @@
 import React, { createContext, useReducer } from "react";
+import {
+  switchThemePanel,
+  SwitchCursorPanel,
+  SwitchHamburgerPanel,
+  swichOnProjects,
+  switchToProjecs
+} from "./reducers/index";
 
 const initialState = {
   switchTheme: false,
   switchCursorBump: false,
   switchHamburgerStatus: false,
-  onProjects: false
-};
-
-const switchThemePanel = (state, action) => {
-  switch (action.type) {
-    case "DARK_THEME": {
-      return action.payload;
-    }
-
-    default:
-      return state.switchTheme;
-  }
-};
-
-const SwitchCursorPanel = (state, action) => {
-  switch (action.type) {
-    case "CURSOR_OVER":
-      return action.payload;
-    default:
-      return state.switchCursorBump;
-  }
-};
-
-const SwitchHamburgerPanel = (state, action) => {
-  switch (action.type) {
-    case "HAMBURGER_STATUS":
-      return action.payload;
-    default:
-      return state.switchHamburgerStatus;
-  }
-};
-
-const swichOnProjects = (state, action) => {
-  switch (action.type) {
-    case "ON_PROJECTS":
-      return action.payload;
-    default:
-      return state.onProjects;
-  }
+  onProjects: false,
+  scrollToProjects: false
 };
 
 const reducer = (state, action) => ({
   switchTheme: switchThemePanel(state, action),
   switchCursorBump: SwitchCursorPanel(state, action),
   switchHamburgerStatus: SwitchHamburgerPanel(state, action),
-  onProjects: swichOnProjects(state, action)
+  onProjects: swichOnProjects(state, action),
+  scrollToProjects: switchToProjecs(state, action)
 });
 
 const AppContext = createContext({ state: initialState, dispatch: () => null });

@@ -95,13 +95,18 @@ const Hamburger = () => {
   const handleCloseHamburger = useCallback(
     (name) => {
       if (name.toLowerCase() === "home") {
-        dispatch({
-          type: "HAMBURGER_STATUS",
-          payload: false
-        });
         window.scrollTo({ top: 0 });
         document.body.style.overflow = "unset";
       }
+
+      if (name.toLowerCase() === "projects") {
+        dispatch({ type: "SCROLL_ON", payload: true });
+      }
+
+      dispatch({
+        type: "HAMBURGER_STATUS",
+        payload: false
+      });
     },
     [dispatch]
   );

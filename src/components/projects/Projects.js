@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useContext,
-  memo,
-  useEffect,
-  useCallback
-} from "react";
+import React, { useState, useContext, memo, useCallback, useRef } from "react";
 
 //helper
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -53,7 +47,8 @@ function sliceIntoChunks(arr, chunkSize) {
 
 const Projects = () => {
   const [entered, setEntered] = useState("");
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const workLocation = useRef(null);
 
   const handleMouseEnter = useCallback(
     (name) => {
@@ -90,28 +85,41 @@ const Projects = () => {
   const workThree = useAnimation();
   const workFour = useAnimation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     inSchemaZero ? workZero.start("visible") : workZero.start("hidden");
   }, [workZero, inSchemaZero]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     inSchemaOne ? workOne.start("visible") : workOne.start("hidden");
   }, [workOne, inSchemaOne]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     inSchemaTwo ? workTwo.start("visible") : workTwo.start("hidden");
   }, [workTwo, inSchemaTwo]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     inSchemaThree ? workThree.start("visible") : workThree.start("hidden");
   }, [workThree, inSchemaThree]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     inSchemaFour ? workFour.start("visible") : workFour.start("hidden");
   }, [workFour, inSchemaFour]);
 
+  const scrollToProjects = React.useMemo(
+    () => state.scrollToProjects,
+    [state.scrollToProjects]
+  );
+
+  React.useEffect(() => {
+    if (scrollToProjects) {
+      window.scrollTo(0, workLocation.current.offsetTop);
+      document.body.style.overflow = "unset";
+      dispatch({ type: "SCROLL_ON", payload: false });
+    }
+  }, [scrollToProjects, dispatch]);
+
   return (
-    <div>
+    <div ref={workLocation}>
       <Schema
         play={workZero}
         Ref={scheamaZero}
@@ -195,7 +203,6 @@ const Schema = memo((props) => {
                 animate={play}
                 initial="hidden"
                 variants={technologyVariant}
-                custom={0}
               >
                 <BannerRowCenter title={el.tech} speed={2} type={true} />
               </BannerContainer>
@@ -215,7 +222,7 @@ const Text = memo(({ name, entered, play }) => {
         animate={play}
         initial="hidden"
         variants={projectVariants}
-        custom={Math.abs(i / 20)}
+        custom={Math.abs(i / 12)}
       >
         <Span
           className={entered === name ? "rotate" : ""}
