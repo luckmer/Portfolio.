@@ -32,22 +32,12 @@ const Cursor = () => {
   const bump = state.switchCursorBump;
   const projectsOn = state.onProjects;
 
-  const mobile = navigator.userAgent;
-  if (
-    /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-      mobile
-    ) ||
-    /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(mobile)
-  ) {
-    return <div />;
-  } else {
-    return (
-      <CursorStyle
-        ref={ref}
-        className={bump ? "bump" : projectsOn ? "hexagon" : ""}
-      />
-    );
-  }
+  return (
+    <CursorStyle
+      ref={ref}
+      className={bump ? "bump" : projectsOn ? "hexagon" : ""}
+    />
+  );
 };
 
 export default React.memo(Cursor);
