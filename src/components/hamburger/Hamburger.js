@@ -54,15 +54,18 @@ const Hamburger = () => {
     { name: "projects", number: "3" }
   ];
 
-  const handleMouseOver = (text, number) => {
-    setRotate({ text, number });
-    dispatch({ type: "CURSOR_OVER", payload: true });
-  };
+  const handleMouseOver = useCallback(
+    (text, number) => {
+      setRotate({ text, number });
+      dispatch({ type: "CURSOR_OVER", payload: true });
+    },
+    [dispatch]
+  );
 
-  const handleMouseOut = () => {
+  const handleMouseOut = useCallback(() => {
     setRotate({ text: "", number: "" });
     dispatch({ type: "CURSOR_OVER", payload: false });
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     const locations = [
@@ -103,10 +106,7 @@ const Hamburger = () => {
         dispatch({ type: "SCROLL_ON", payload: true });
       }
 
-      dispatch({
-        type: "HAMBURGER_STATUS",
-        payload: false
-      });
+      dispatch({ type: "HAMBURGER_STATUS", payload: false });
     },
     [dispatch]
   );

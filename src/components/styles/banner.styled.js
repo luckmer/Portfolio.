@@ -31,18 +31,17 @@ export const LetterContainer = styled.span`
   padding: 0 10vw;
 
   p {
-    font-size: min(28vmin, 28vmin);
-    font-weight: bold;
-    color: ${(props) => props.theme.color} !important;
-
     -webkit-transition: color 500ms linear !important;
     -ms-transition: color 500ms linear !important;
     transition: color 500ms linear !important;
+    font-size: min(28vmin, 28vmin);
+    font-weight: bold;
+    color: ${(props) => props.theme.color} !important;
   }
 
   &:hover {
     text-decoration: line-through;
-    color: lightsalmon;
+    color: #ef3f24;
   }
 `;
 
