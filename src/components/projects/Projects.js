@@ -229,7 +229,7 @@ const Text = memo(({ name, entered, play }) => {
           changecolor={true.toString()}
           id={i}
         >
-          {text === " " ? "-" : text}
+          {text}
         </Span>
       </FlexDiv>
     );
