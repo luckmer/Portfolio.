@@ -159,6 +159,8 @@ const Projects = () => {
   );
 };
 
+export default memo(Projects);
+
 const Schema = memo((props) => {
   const { play, Ref, index, data, mousePanel } = props;
   const { Entered, handleMouseEnter, handleMouseOut } = mousePanel;
@@ -235,5 +237,3 @@ const Text = memo(({ name, entered, play }) => {
     );
   });
 });
-
-export default memo(Projects);
