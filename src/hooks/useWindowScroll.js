@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const UseWindowScrollHook = () => {
-  const [scrolling, setScrolling] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
+  const [Scrolling, setScrolling] = useState(false);
+  const [ScrollTop, setScrollTop] = useState(0);
 
   useEffect(() => {
     function onScroll() {
       let currentPosition = window.pageYOffset;
-      if (currentPosition > scrollTop) {
+      if (currentPosition > ScrollTop) {
         setScrolling(false);
       } else {
         setScrolling(true);
@@ -17,7 +17,10 @@ const UseWindowScrollHook = () => {
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop]);
+  }, [ScrollTop]);
+
+  const scrollTop = useMemo(() => ScrollTop, [ScrollTop]);
+  const scrolling = useMemo(() => Scrolling, [Scrolling]);
 
   return { scrollTop, scrolling };
 };

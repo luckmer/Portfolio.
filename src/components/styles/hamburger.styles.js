@@ -5,11 +5,9 @@ export const A = styled.a`
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   text-decoration: none;
   color: ${(props) => props.theme.darkThemeBackground};
-
   @media screen and (min-width: 700px) {
     font-size: 2vmin;
   }
-
   @media screen and (max-width: 700px) {
     font-size: 5vmin;
   }
@@ -20,17 +18,14 @@ export const FooterSpan = styled.span`
   @media screen and (min-width: 700px) {
     font-size: 2vmin;
   }
-
   @media screen and (max-width: 700px) {
     font-size: 5vmin;
   }
 `;
 
 export const Footer = styled(motion.footer)`
-  border-top: 1px solid ${(props) => props.theme.darkThemeBackground};
   z-index: 1010;
   position: absolute;
-
   bottom: 0;
   left: 0;
   width: 100%;
@@ -47,7 +42,6 @@ export const HideArrow = styled(motion.span)`
   @media screen and (max-width: 700px) {
     display: none;
   }
-
   transition: all 500ms ease;
   font-size: 10vmin;
   width: 0;
@@ -58,13 +52,11 @@ export const HideArrow = styled(motion.span)`
     props.changecolor === "true"
       ? props.theme.darkThemeColor
       : props.theme.darkThemeBackground};
-
   @media screen and (min-width: 700px) {
     &.out {
       left: -15vmin;
       opacity: 0;
     }
-
     &.rotate {
       opacity: 1;
       width: 10vmin;
@@ -74,7 +66,6 @@ export const HideArrow = styled(motion.span)`
 `;
 
 const Open = keyframes`
-
 from{
   opacity: 0;
   transform: translateY(100%);
@@ -83,11 +74,9 @@ to{
   opacity: 1;
   transform: translateY(0);
 }
-
 `;
 
 const hide = keyframes`
-
 from{
   transform: translateY(0);
 }
@@ -95,7 +84,6 @@ to{
   opacity: 0;
   transform: translateY(-100%);
 }
-
 `;
 
 export const SpanFlex = styled(motion.div)`
@@ -107,7 +95,6 @@ export const SpanFlex = styled(motion.div)`
   &.rotate {
     transform: translateX(calc(calc((65 / 31) * 1vmin) * 1.2));
   }
-
   a {
     text-decoration: none;
     white-space: nowrap;
@@ -116,19 +103,26 @@ export const SpanFlex = styled(motion.div)`
 
 export const Span = styled.span`
   color: ${(props) =>
-    props.changecolor
+    props.changecolor === "true"
       ? props.theme.darkThemeColor
       : props.theme.darkThemeBackground};
 
-  font-size: 15vmin;
   text-transform: uppercase;
-
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   transition: all 500ms ease;
+
+  @media screen and (min-width: 1000px) {
+    font-size: 15vmin;
+  }
+
+  @media screen and (max-width: 1000px) {
+    font-size: 14vmin;
+  }
+
   a {
     transition: all 500ms ease;
     color: ${(props) =>
-      props.changecolor
+      props.changecolor === "true"
         ? props.theme.darkThemeColor
         : props.theme.darkThemeBackground};
   }
@@ -176,7 +170,7 @@ export const Li = styled(motion.li)`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  overflow: hidden;
+  overflow: ${({ hidetext }) => (hidetext === "false" ? "none" : "hidden")};
 `;
 
 export const Nav = styled(motion.section)`
@@ -186,9 +180,7 @@ export const Nav = styled(motion.section)`
   z-index: 1004;
   display: flex;
   flex-direction: column;
-
   padding: calc((120 / 31) * 1vmin) calc((53 / 31) * 1vmin) 0;
-
   li {
     text-decoration: none;
     list-style: none;
@@ -209,16 +201,24 @@ export const CounterSpan = styled(motion.span)`
     z-index: 999;
     transform: translateY(0);
   }
-
   &.out {
     animation: ${hide} 400ms both;
     z-index: -999;
   }
-
   overflow: hidden;
 `;
 
 export const DivCounterSpacer = styled(motion.div)`
   position: relative;
   display: flex;
+`;
+
+export const BannerContainer = styled(motion.div)`
+  position: relative;
+  overflow: hidden;
+`;
+
+export const FlexDiv = styled(motion.div)`
+  display: inline-flex;
+  position: relative;
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const ImgInformation = styled.div`
+export const ImgInformation = styled(motion.div)`
   @media screen and (min-width: 1000px) {
     background-color: ${({ theme }) => theme.darkThemeColor};
     width: 50vmin;
@@ -11,46 +12,32 @@ export const ImgInformation = styled.div`
     font-size: 20vmin;
     border-radius: 2vmin;
     color: ${({ theme }) => theme.darkThemeBackground};
-
-    &.hide {
-      opacity: 0;
-    }
+    position: relative;
   }
 
   @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
-export const ImgSpacer = styled.div`
+export const ImgSpacer = styled(motion.div)`
+  overflow: hidden;
+
   @media screen and (min-width: 1000px) {
-    position: fixed;
-    transition: 100ms linear all;
-    bottom: 3.5vmin;
-    left: 3.5vmin;
-    z-index: 1001;
-    pointer-events: none;
   }
 
   @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
-export const Img = styled.img`
-  width: 90vmin;
+export const Img = styled(motion.img)`
   object-fit: contain;
-  transition: 100ms linear all;
-  border-radius: 2vmin;
-
-  &.hide {
-    opacity: 0;
-  }
-
-  &.open {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
+  width: 70vmin;
+  position: relative;
+  border-radius: 3vmin;
 `;
 export const Section = styled.div`
+  overflow: hidden;
+
   @media screen and (min-width: 1000px) {
     width: 90%;
     margin: auto;
@@ -65,19 +52,25 @@ export const DivContainer = styled.div`
   color: ${(props) => props.theme.darkThemeColor};
 
   text-align: left;
-  margin-bottom: 20vmin;
-  margin-top: 20vmin;
+  margin-bottom: 5vmin;
+  margin-top: 5vmin;
 
   @media screen and (min-width: 1000px) {
     width: 50%;
+    margin-bottom: 5vmin;
+    margin-top: 5vmin;
   }
 
   @media screen and (max-width: 1000px) {
     width: 100%;
+    margin-bottom: 20vmin;
+    margin-top: 20vmin;
   }
 `;
 export const HeaderSpacer = styled.div`
   a {
+    overflow-y: hidden;
+
     color: ${({ theme }) => theme.darkThemeColor};
     text-decoration: none;
   }

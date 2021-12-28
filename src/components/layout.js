@@ -29,7 +29,7 @@ import CounterBanner from "../animations/counterBanner";
 const darkTheme = {
   background: "#646461",
   color: "#f3efee",
-  dot: "#d0503e",
+  dot: "#ef3f24",
   change: "#646461",
   layoutBackground: "#646461",
   darkThemeBackground: "#0f0f0f",
@@ -111,6 +111,6 @@ const ScrollBar = styled.div`
   top: 0;
   width: 0;
   height: 0.5vmin;
-  background: #d0503e;
+  background: #ef3f24;
   z-index: 999999;
 `;

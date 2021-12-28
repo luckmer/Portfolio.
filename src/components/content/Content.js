@@ -191,7 +191,7 @@ const HeaderDiv = styled.div`
 
   h2 {
     position: relative;
-    color: #d0503e;
+    color: #ef3f24;
     font-weight: bolder;
     font-family: "Bakbak One", cursive;
   }

@@ -78,7 +78,7 @@ export const TextSpped = styled.span`
   p {
     transition: all 500ms ease !important;
     font-weight: bold;
-    color: #d0503e;
+    color: #ef3f24;
     font-size: 2vmin;
   }
 `;
