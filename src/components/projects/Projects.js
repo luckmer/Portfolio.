@@ -90,6 +90,39 @@ const Projects = () => {
   const workThree = useAnimation();
   const workFour = useAnimation();
 
+  React.useEffect(() => {
+    inSchemaZero ? workZero.start("visible") : workZero.start("hidden");
+  }, [workZero, inSchemaZero]);
+
+  React.useEffect(() => {
+    inSchemaOne ? workOne.start("visible") : workOne.start("hidden");
+  }, [workOne, inSchemaOne]);
+
+  React.useEffect(() => {
+    inSchemaTwo ? workTwo.start("visible") : workTwo.start("hidden");
+  }, [workTwo, inSchemaTwo]);
+
+  React.useEffect(() => {
+    inSchemaThree ? workThree.start("visible") : workThree.start("hidden");
+  }, [workThree, inSchemaThree]);
+
+  React.useEffect(() => {
+    inSchemaFour ? workFour.start("visible") : workFour.start("hidden");
+  }, [workFour, inSchemaFour]);
+
+  const scrollToProjects = React.useMemo(
+    () => state.scrollToProjects,
+    [state.scrollToProjects]
+  );
+
+  React.useEffect(() => {
+    if (scrollToProjects) {
+      window.scrollTo(0, workLocation.current.offsetTop);
+      document.body.style.overflow = "unset";
+      dispatch({ type: "SCROLL_ON", payload: false });
+    }
+  }, [scrollToProjects, dispatch]);
+
   const Zeroscheama = React.useCallback(
     (node) => {
       scheamaZeroRef.current = node;
@@ -125,39 +158,6 @@ const Projects = () => {
     },
     [scheamaFour]
   );
-
-  React.useEffect(() => {
-    inSchemaZero ? workZero.start("visible") : workZero.start("hidden");
-  }, [workZero, inSchemaZero]);
-
-  React.useEffect(() => {
-    inSchemaOne ? workOne.start("visible") : workOne.start("hidden");
-  }, [workOne, inSchemaOne]);
-
-  React.useEffect(() => {
-    inSchemaTwo ? workTwo.start("visible") : workTwo.start("hidden");
-  }, [workTwo, inSchemaTwo]);
-
-  React.useEffect(() => {
-    inSchemaThree ? workThree.start("visible") : workThree.start("hidden");
-  }, [workThree, inSchemaThree]);
-
-  React.useEffect(() => {
-    inSchemaFour ? workFour.start("visible") : workFour.start("hidden");
-  }, [workFour, inSchemaFour]);
-
-  const scrollToProjects = React.useMemo(
-    () => state.scrollToProjects,
-    [state.scrollToProjects]
-  );
-
-  React.useEffect(() => {
-    if (scrollToProjects) {
-      window.scrollTo(0, workLocation.current.offsetTop);
-      document.body.style.overflow = "unset";
-      dispatch({ type: "SCROLL_ON", payload: false });
-    }
-  }, [scrollToProjects, dispatch]);
 
   return (
     <div ref={workLocation}>

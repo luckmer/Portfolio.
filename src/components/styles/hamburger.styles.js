@@ -109,7 +109,7 @@ export const Span = styled.span`
 
   text-transform: uppercase;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
-  transition: all 500ms ease;
+  transition: 0.5s linear all;
 
   @media screen and (min-width: 1000px) {
     font-size: 15vmin;
@@ -221,4 +221,5 @@ export const BannerContainer = styled(motion.div)`
 export const FlexDiv = styled(motion.div)`
   display: inline-flex;
   position: relative;
+  transition: 0.5s linear all;
 `;
