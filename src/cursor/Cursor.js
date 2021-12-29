@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 //styles
 import styled from "styled-components";
@@ -7,6 +7,8 @@ import styled from "styled-components";
 import { AppContext } from "../store/store";
 
 const Cursor = () => {
+  const [mobile, setMobile] = useState(false);
+
   const { state } = useContext(AppContext);
 
   const ref = useRef(null);
@@ -32,7 +34,24 @@ const Cursor = () => {
   const bump = state.switchCursorBump;
   const projectsOn = state.onProjects;
 
-  return (
+  useEffect(() => {
+    const mobile = navigator.userAgent;
+
+    if (
+      /Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+        mobile
+      ) ||
+      /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(mobile)
+    ) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+  }, []);
+
+  return mobile ? (
+    <div />
+  ) : (
     <CursorStyle
       ref={ref}
       className={bump ? "bump" : projectsOn ? "hexagon" : ""}

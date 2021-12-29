@@ -1,40 +1,5 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
-export const ImgInformation = styled(motion.div)`
-  @media screen and (min-width: 1000px) {
-    background-color: ${({ theme }) => theme.darkThemeColor};
-    width: 50vmin;
-    height: 20vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20vmin;
-    border-radius: 2vmin;
-    color: ${({ theme }) => theme.darkThemeBackground};
-    position: relative;
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-export const ImgSpacer = styled(motion.div)`
-  overflow: hidden;
-
-  @media screen and (min-width: 1000px) {
-  }
-
-  @media screen and (max-width: 1000px) {
-    display: none;
-  }
-`;
-export const Img = styled(motion.img)`
-  object-fit: contain;
-  width: 70vmin;
-  position: relative;
-  border-radius: 3vmin;
-`;
 export const Section = styled.div`
   overflow: hidden;
 

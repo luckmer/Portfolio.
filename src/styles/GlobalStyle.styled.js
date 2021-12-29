@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
   -webkit-transition: background-color 500ms linear;
   -ms-transition: background-color 500ms linear;
   transition: background-color 500ms linear;
-  font-display: swap;
+  cursor:none;
+  
 }
 
 
@@ -17,6 +18,13 @@ body{
   background-color:${(props) => props.theme.darkThemeBackground};
 }
 
+#gatsby-focus-wrapper{
+  display:flex;
+}
+
+::-webkit-scrollbar {
+  width:0;
+}
 
 ::selection {
   color: #fff;
@@ -27,8 +35,3 @@ body{
 `;
 
 export default GlobalStyle;
-
-// ::-webkit-scrollbar {
-//   width:0;
-// }
-// cursor:none;

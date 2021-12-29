@@ -21,17 +21,3 @@ export const technologyVariant = {
     left: "-100%"
   })
 };
-
-export const ImgVariant = {
-  visible: () => ({
-    left: 0,
-    opacity: 1,
-    transition: { ...transition }
-  }),
-
-  hidden: () => ({
-    left: "-100%",
-    opacity: 0,
-    transition: { ...transition }
-  })
-};

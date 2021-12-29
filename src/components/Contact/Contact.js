@@ -35,7 +35,7 @@ const Contact = () => {
   }, []);
 
   useEffect(() => {
-    inContactView ? contact.start("visible") : contact.start("hidden");
+    inContactView && contact.start("visible");
   }, [contact, inContactView]);
 
   const setRefs = React.useCallback(

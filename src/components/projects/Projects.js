@@ -7,9 +7,6 @@ import BannerRowCenter from "../helper/BannerGenerator";
 import { AppContext } from "../../store/store";
 import { index } from "../../api";
 
-//icons
-import { MdHideImage } from "react-icons/md";
-
 //styles
 import {
   Span,
@@ -18,20 +15,12 @@ import {
   BannerContainer,
   FlexDiv
 } from "../styles/hamburger.styles";
-import {
-  Section,
-  DivContainer,
-  HeaderSpacer,
-  ImgSpacer,
-  Img,
-  ImgInformation
-} from "../styles/projects.style";
+import { Section, DivContainer, HeaderSpacer } from "../styles/projects.style";
 
 //animaitons
 import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
-  ImgVariant,
   technologyVariant,
   projectVariants
 } from "../../animations/projectVariants";
@@ -91,23 +80,23 @@ const Projects = () => {
   const workFour = useAnimation();
 
   React.useEffect(() => {
-    inSchemaZero ? workZero.start("visible") : workZero.start("hidden");
+    inSchemaZero && workZero.start("visible");
   }, [workZero, inSchemaZero]);
 
   React.useEffect(() => {
-    inSchemaOne ? workOne.start("visible") : workOne.start("hidden");
+    inSchemaOne && workOne.start("visible");
   }, [workOne, inSchemaOne]);
 
   React.useEffect(() => {
-    inSchemaTwo ? workTwo.start("visible") : workTwo.start("hidden");
+    inSchemaTwo && workTwo.start("visible");
   }, [workTwo, inSchemaTwo]);
 
   React.useEffect(() => {
-    inSchemaThree ? workThree.start("visible") : workThree.start("hidden");
+    inSchemaThree && workThree.start("visible");
   }, [workThree, inSchemaThree]);
 
   React.useEffect(() => {
-    inSchemaFour ? workFour.start("visible") : workFour.start("hidden");
+    inSchemaFour && workFour.start("visible");
   }, [workFour, inSchemaFour]);
 
   const scrollToProjects = React.useMemo(
@@ -221,25 +210,6 @@ const DisplaySchemaContent = memo((props) => {
                   >
                     <Text name={el.name} entered={Entered} play={play} />
                   </a>
-                  <ImgSpacer>
-                    {el.img ? (
-                      <Img
-                        animate={Entered === el.name ? "visible" : "hidden"}
-                        initial="hidden"
-                        variants={ImgVariant}
-                        src={el.img}
-                        alt=""
-                      />
-                    ) : (
-                      <ImgInformation
-                        animate={Entered === el.name ? "visible" : "hidden"}
-                        initial="hidden"
-                        variants={ImgVariant}
-                      >
-                        <MdHideImage />
-                      </ImgInformation>
-                    )}
-                  </ImgSpacer>
                 </SpanFlex>
               </Li>
               <BannerContainer

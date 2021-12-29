@@ -109,7 +109,7 @@ export const Span = styled.span`
 
   text-transform: uppercase;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
-  transition: 0.5s linear all;
+  transition: 300ms linear all;
 
   @media screen and (min-width: 1000px) {
     font-size: 15vmin;

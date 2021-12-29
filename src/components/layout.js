@@ -9,7 +9,6 @@ import { Helmet } from "react-helmet";
 
 //components
 import Hamburger from "./hamburger/Hamburger";
-import CirclePanel from "../cursor/CirclePanel";
 import Nav from "./nav/Nav";
 
 //store
@@ -50,7 +49,6 @@ const lightTheme = {
 const Layout = ({ children }) => {
   const { state } = useContext(AppContext);
   const { scrollTop } = UseWindowScrollHook();
-  const darkStatus = state.switchTheme;
   const progress = useRef(null);
 
   useEffect(() => {

@@ -47,21 +47,19 @@ const Content = () => {
   const [Mainwork, inWorkView] = useInView();
 
   useEffect(() => {
-    inHeaderView ? header.start("visible") : header.start("hidden");
+    inHeaderView && header.start("visible");
   }, [header, inHeaderView]);
 
   useEffect(() => {
-    inWorkView ? work.start("visible") : work.start("hidden");
+    inWorkView && work.start("visible");
   }, [work, inWorkView]);
 
   useEffect(() => {
-    inContentView ? content.start("visible") : content.start("hidden");
+    inContentView && content.start("visible");
   }, [content, inContentView]);
 
   useEffect(() => {
-    inDescriptionView
-      ? description.start("visible")
-      : description.start("hidden");
+    inDescriptionView && description.start("visible");
   }, [description, inDescriptionView]);
 
   return (
