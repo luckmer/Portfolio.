@@ -1,3 +1,3 @@
 # Portfolio.
 
-## [ link ](https://piotr-goik.netlify.app) 
+## [ portfolio ](https://piotr-goik.netlify.app) 
