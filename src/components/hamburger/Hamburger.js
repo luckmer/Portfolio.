@@ -113,13 +113,14 @@ const Hamburger = () => {
 
   return (
     <Nav
+      initial="hidden"
       animate={
         hamburgerStatus ? "visible" : textStatus !== "" ? textStatus : "hidden"
       }
       variants={navVariant}
     >
       <AnimatedDivs
-        initial={false}
+        initial="hidden"
         animate={
           hamburgerStatus
             ? "visible"
@@ -129,11 +130,12 @@ const Hamburger = () => {
         }
         onAnimationStart={() => handleAnimationStart()}
       >
-        <NavDivs custom={0.02} variants={variants}></NavDivs>
-        <NavDivs custom={0.08} variants={variants}></NavDivs>
-        <NavDivs custom={0.16} variants={variants}></NavDivs>
+        <NavDivs initial="hidden" custom={0.02} variants={variants}></NavDivs>
+        <NavDivs initial="hidden" custom={0.08} variants={variants}></NavDivs>
+        <NavDivs initial="hidden" custom={0.16} variants={variants}></NavDivs>
 
         <NavDivs
+          initial="hidden"
           custom={0.24}
           variants={variants}
           onAnimationComplete={() => handleAnimationEnd()}
@@ -141,7 +143,7 @@ const Hamburger = () => {
       </AnimatedDivs>
       <Content>
         <Ul
-          initial={false}
+          initial="hidden"
           animate={
             hamburgerStatus
               ? animationStatus
@@ -164,13 +166,18 @@ const Hamburger = () => {
                   onMouseLeave={handleMouseOut}
                   onClick={() => handleCloseHamburger(text)}
                 >
-                  <HideArrow className={name(text)} variants={arrowVariant}>
+                  <HideArrow
+                    className={name(text)}
+                    initial="hidden"
+                    variants={arrowVariant}
+                  >
                     <HideArrow className={name(text)}>&rArr;</HideArrow>
                   </HideArrow>
                   {[...text].map((el, i) =>
                     link ? (
                       <FlexDiv
                         key={i}
+                        initial="hidden"
                         custom={Math.abs(i / 20)}
                         variants={projectVariants}
                       >
@@ -181,6 +188,7 @@ const Hamburger = () => {
                     ) : (
                       <FlexDiv
                         key={i}
+                        initial="hidden"
                         custom={Math.abs(i / 20)}
                         variants={projectVariants}
                       >
@@ -194,7 +202,7 @@ const Hamburger = () => {
                   )}
                 </SpanFlex>
                 <TestDiv>
-                  <DivCounterSpacer variants={numberVariant}>
+                  <DivCounterSpacer initial="hidden" variants={numberVariant}>
                     <CounterSpan>0</CounterSpan>
                     <CounterSpan className={name(text)}>{number}</CounterSpan>
                   </DivCounterSpacer>
@@ -208,6 +216,7 @@ const Hamburger = () => {
         animate={
           hamburgerStatus ? (animationStatus ? "visible" : "hidden") : "hidden"
         }
+        initial="hidden"
         variants={footerVariant}
       >
         <div>

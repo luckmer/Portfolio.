@@ -74,25 +74,20 @@ const Layout = ({ children }) => {
   );
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <ThemeProvider
-        theme={state.switchTheme === false ? lightTheme : darkTheme}
-      >
-        <ScrollBar ref={progress} />
-        <CounterBanner />
-        <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
-        <Hamburger />
-        <Helmet>
-          <style>
-            @import
-            url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
-          </style>
-        </Helmet>
-        <GlobalStyle />
-        <Nav />
-        <Main>{children}</Main>
-      </ThemeProvider>
-    </AnimatePresence>
+    <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
+      <ScrollBar ref={progress} />
+      <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
+      <Hamburger />
+      <Helmet>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
+        </style>
+      </Helmet>
+      <GlobalStyle />
+      <Nav />
+      <Main>{children}</Main>
+    </ThemeProvider>
   );
 };
 

@@ -74,16 +74,57 @@ const Projects = () => {
   };
 
   const [scheamaZero, inSchemaZero] = useInView();
+  const scheamaZeroRef = React.useRef();
   const [scheamaOne, inSchemaOne] = useInView();
+  const scheamaOneRef = React.useRef();
   const [schemaTwo, inSchemaTwo] = useInView();
+  const schemaTwoRef = React.useRef();
   const [schemaThree, inSchemaThree] = useInView();
+  const schemaThreeRef = React.useRef();
   const [scheamaFour, inSchemaFour] = useInView();
+  const scheamaFourRef = React.useRef();
 
   const workZero = useAnimation();
   const workOne = useAnimation();
   const workTwo = useAnimation();
   const workThree = useAnimation();
   const workFour = useAnimation();
+
+  const Zeroscheama = React.useCallback(
+    (node) => {
+      scheamaZeroRef.current = node;
+      scheamaZero(node);
+    },
+    [scheamaZero]
+  );
+  const Onescheama = React.useCallback(
+    (node) => {
+      scheamaOneRef.current = node;
+      scheamaOne(node);
+    },
+    [scheamaOne]
+  );
+  const Twoschema = React.useCallback(
+    (node) => {
+      schemaTwoRef.current = node;
+      schemaTwo(node);
+    },
+    [schemaTwo]
+  );
+  const Threeschema = React.useCallback(
+    (node) => {
+      schemaThreeRef.current = node;
+      schemaThree(node);
+    },
+    [schemaThree]
+  );
+  const Fourscheama = React.useCallback(
+    (node) => {
+      scheamaFourRef.current = node;
+      scheamaFour(node);
+    },
+    [scheamaFour]
+  );
 
   React.useEffect(() => {
     inSchemaZero ? workZero.start("visible") : workZero.start("hidden");
@@ -122,35 +163,35 @@ const Projects = () => {
     <div ref={workLocation}>
       <DisplaySchemaContent
         play={workZero}
-        Ref={scheamaZero}
+        Ref={Zeroscheama}
         index={1}
         data={work[0]}
         mousePanel={mousePanel}
       />
       <DisplaySchemaContent
         play={workOne}
-        Ref={scheamaOne}
+        Ref={Onescheama}
         index={2}
         data={work[1]}
         mousePanel={mousePanel}
       />
       <DisplaySchemaContent
         play={workTwo}
-        Ref={schemaTwo}
+        Ref={Twoschema}
         index={3}
         data={work[2]}
         mousePanel={mousePanel}
       />
       <DisplaySchemaContent
         play={workThree}
-        Ref={schemaThree}
+        Ref={Threeschema}
         index={4}
         data={work[3]}
         mousePanel={mousePanel}
       />
       <DisplaySchemaContent
         play={workFour}
-        Ref={scheamaFour}
+        Ref={Fourscheama}
         index={5}
         data={work[4]}
         mousePanel={mousePanel}
