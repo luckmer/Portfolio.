@@ -120,8 +120,6 @@ export const Canvas = styled.canvas`
   left: 0px;
   right: 0px;
   bottom: 0px;
-  width: 100%;
-  height: 100%;
   z-index: 998;
   &.mobile {
     z-index: 999;
@@ -135,9 +133,8 @@ export const TextAnimation = styled.div`
 `;
 
 export const ScrollDown = styled(motion.div)`
-  position: absolute;
-  bottom: 0;
-  left: 1vmin;
+  position: relative;
+  height:100%;
   pointer-events: none;
   z-index: 999;
   color: ${(props) => props.theme.color};
@@ -145,7 +142,6 @@ export const ScrollDown = styled(motion.div)`
   display: flex;
   white-space nowrap;
   overflow-y:hidden;
-  height: 20vmin;
   align-items: flex-end;
 
   

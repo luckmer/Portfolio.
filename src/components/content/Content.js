@@ -8,6 +8,7 @@ import { AppContext } from "../../store/store";
 
 //styles
 import { TextAnimation } from "../styles/banner.styled";
+import styled from "styled-components";
 import {
   Div1,
   MainDivHeader,
@@ -23,7 +24,6 @@ import Projects from "../projects/Projects";
 //animations
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import styled from "styled-components";
 
 //animations
 import {
@@ -42,9 +42,16 @@ const Content = () => {
   const header = useAnimation();
 
   const [MainDescription, inDescriptionView] = useInView();
+  const MainDescriptionRef = React.useRef();
+
   const [MainContent, inContentView] = useInView();
+  const MainContentRef = React.useRef();
+
   const [MainHeader, inHeaderView] = useInView();
+  const MainHeaderRef = React.useRef();
+
   const [Mainwork, inWorkView] = useInView();
+  const MainworkRef = React.useRef();
 
   useEffect(() => {
     inHeaderView && header.start("visible");
@@ -62,9 +69,41 @@ const Content = () => {
     inDescriptionView && description.start("visible");
   }, [description, inDescriptionView]);
 
+  const mainCallback = React.useCallback(
+    (node) => {
+      MainDescriptionRef.current = node;
+      MainDescription(node);
+    },
+    [MainDescription]
+  );
+
+  const contentCallback = React.useCallback(
+    (node) => {
+      MainContentRef.current = node;
+      MainContent(node);
+    },
+    [MainContent]
+  );
+
+  const headerCallback = React.useCallback(
+    (node) => {
+      MainHeaderRef.current = node;
+      MainHeader(node);
+    },
+    [MainHeader]
+  );
+
+  const workCallback = React.useCallback(
+    (node) => {
+      MainworkRef.current = node;
+      Mainwork(node);
+    },
+    [Mainwork]
+  );
+
   return (
     <Div1>
-      <MainDivHeader ref={MainHeader}>
+      <MainDivHeader ref={headerCallback}>
         <H>
           <Small animate={header} initial="hidden" variants={squareVariants}>
             ( 001 )
@@ -86,7 +125,7 @@ const Content = () => {
           ))}
         </H>
       </MainDivHeader>
-      <MainDivHeader ref={MainContent}>
+      <MainDivHeader ref={contentCallback}>
         <HideText>
           <H2Spacer
             animate={content}
@@ -123,7 +162,7 @@ const Content = () => {
           </span>
         </motion.p>
       </MainDivHeader>
-      <MainDivHeader ref={MainDescription}>
+      <MainDivHeader ref={mainCallback}>
         <motion.p
           animate={description}
           custom={0.2}
@@ -139,7 +178,7 @@ const Content = () => {
           <BannerRowCenter title="-recent-work-" speed={2} />
         </TextAnimation>
       </AnimationPanel>
-      <ContentContainer ref={Mainwork}>
+      <ContentContainer ref={workCallback}>
         <RecentSlicer>
           <Small animate={work} initial="hidden" variants={squareVariants}>
             ( 001 )

@@ -70,10 +70,11 @@ const CounterBanner = () => {
 
   const handleAnimationEnd = () => {
     document.body.style.overflow = "unset";
+    window.scrollTo({ top: 0 });
   };
 
   const onStart = () => {
-    document.body.style.overflow = "hidden";
+    document.body.style = "overflow:hidden; position:relative;";
   };
 
   const variants = {
