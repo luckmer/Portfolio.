@@ -77,7 +77,6 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={state.switchTheme === false ? lightTheme : darkTheme}>
       <ScrollBar ref={progress} />
       <CounterBanner />
-      <CirclePanel scrollTop={scrollTop} darkTheme={darkStatus} />
       <Hamburger />
       <Helmet>
         <style>

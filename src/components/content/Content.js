@@ -162,6 +162,7 @@ const Content = () => {
             </HeaderDiv>
           ))}
         </RecentSlicer>
+        <Projects />
       </ContentContainer>
     </Div1>
   );

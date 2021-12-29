@@ -13,7 +13,6 @@ import Contact from "../components/Contact/Contact";
 
 //cursor
 import Cursor from "../cursor/Cursor";
-import Projects from "../components/projects/Projects";
 
 // markup
 const IndexPage = () => {
@@ -23,7 +22,6 @@ const IndexPage = () => {
         <Cursor />
         <Banner />
         <Content />
-        <Projects />
         <Contact />
       </Layout>
     </AppProvider>

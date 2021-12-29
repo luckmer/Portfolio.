@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 //images
 import rotateBlack from "../images/rotate_black.png";
 import rotateWhite from "../images/rotate_white.png";
@@ -16,4 +16,4 @@ const CirclePanel = ({ scrollTop, darkTheme }) => {
   );
 };
 
-export default CirclePanel;
+export default memo(CirclePanel);
