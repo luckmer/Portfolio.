@@ -195,6 +195,8 @@ const DisplaySchemaContent = memo((props) => {
   const { play, Ref, index, data, mousePanel } = props;
   const { Entered, handleMouseEnter, handleMouseOut } = mousePanel;
 
+  console.log(data);
+
   return (
     <div key={index} ref={Ref}>
       {data.map((el, i) => (
