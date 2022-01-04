@@ -16,8 +16,6 @@ import Cursor from "../cursor/Cursor";
 
 // markup
 const IndexPage = () => {
-  window.console.log = () => {};
-
   return (
     <AppProvider>
       <Layout>
