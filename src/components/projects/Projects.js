@@ -56,13 +56,11 @@ const sliceIntoChunks = (arr, chunkSize) => {
 
 const Projects = () => {
   const [entered, setEntered] = useState("");
-  const [ID, setID] = useState("");
   const { state, dispatch } = useContext(AppContext);
   const workLocation = useRef(null);
 
   const handleMouseEnter = useCallback(
     (name) => {
-      setID(name);
       dispatch({ type: "ON_PROJECTS", payload: true });
       setEntered(name);
     },
@@ -73,7 +71,6 @@ const Projects = () => {
   const handleMouseOut = useCallback(() => {
     dispatch({ type: "ON_PROJECTS", payload: false });
     setEntered("");
-    setID("");
   }, [dispatch]);
 
   const work = sliceIntoChunks(index, 2);
