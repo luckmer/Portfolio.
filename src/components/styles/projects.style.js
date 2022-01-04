@@ -7,11 +7,6 @@ export const Section = styled.div`
     width: 90%;
     margin: auto;
   }
-
-  @media screen and (max-width: 1000px) {
-    width: 80%;
-    margin: auto;
-  }
 `;
 export const DivContainer = styled.div`
   color: ${(props) => props.theme.darkThemeColor};

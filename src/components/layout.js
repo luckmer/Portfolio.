@@ -54,6 +54,8 @@ const Layout = ({ children }) => {
   useEffect(() => {
     const scrollBar = progress.current;
 
+    if (!scrollBar) return;
+
     let scrollTop =
       document.documentElement["scrollTop"] || document.body["scrollTop"];
 

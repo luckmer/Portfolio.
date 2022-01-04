@@ -1,4 +1,12 @@
-import React, { useState, useContext, memo, useCallback, useRef } from "react";
+import React, {
+  useState,
+  useContext,
+  memo,
+  useCallback,
+  useRef,
+  Fragment
+} from "react";
+import hoverEffect from "hover-effect";
 
 //helper
 import BannerRowCenter from "../helper/BannerGenerator";
@@ -25,31 +33,47 @@ import {
   projectVariants
 } from "../../animations/projectVariants";
 
-function sliceIntoChunks(arr, chunkSize) {
+//images
+import battleship from "../../images/hoverEffect/battleShip.png";
+import movie_app from "../../images/hoverEffect/movie_app.png";
+import note_app from "../../images/hoverEffect/note_app.png";
+import calendar from "../../images/hoverEffect/calendar.png";
+import pac_man from "../../images/hoverEffect/pac_man.png";
+import checker from "../../images/hoverEffect/checker.png";
+import tetris from "../../images/hoverEffect/tetris.png";
+import chess from "../../images/hoverEffect/chess.png";
+import bump from "../../images/hoverEffect/bump.png";
+import game from "../../images/hoverEffect/2048.png";
+
+const sliceIntoChunks = (arr, chunkSize) => {
   const res = [];
   for (let i = 0; i < arr.length; i += chunkSize) {
     const chunk = arr.slice(i, i + chunkSize);
     res.push(chunk);
   }
   return res;
-}
+};
 
 const Projects = () => {
   const [entered, setEntered] = useState("");
+  const [ID, setID] = useState("");
   const { state, dispatch } = useContext(AppContext);
   const workLocation = useRef(null);
 
   const handleMouseEnter = useCallback(
     (name) => {
+      setID(name);
       dispatch({ type: "ON_PROJECTS", payload: true });
       setEntered(name);
     },
+
     [dispatch]
   );
 
   const handleMouseOut = useCallback(() => {
     dispatch({ type: "ON_PROJECTS", payload: false });
     setEntered("");
+    setID("");
   }, [dispatch]);
 
   const work = sliceIntoChunks(index, 2);
@@ -99,18 +123,66 @@ const Projects = () => {
     inSchemaFour && workFour.start("visible");
   }, [workFour, inSchemaFour]);
 
-  const scrollToProjects = React.useMemo(
-    () => state.scrollToProjects,
-    [state.scrollToProjects]
-  );
-
   React.useEffect(() => {
-    if (scrollToProjects) {
-      window.scrollTo(0, workLocation.current.offsetTop);
-      document.body.style.overflow = "unset";
-      dispatch({ type: "SCROLL_ON", payload: false });
-    }
-  }, [scrollToProjects, dispatch]);
+    const design = {
+      intensity: 0.4,
+      image1: " ",
+      displacementImage: bump,
+      speedIn: 2,
+      speedOut: 2,
+      angle: (Math.PI / Math.random()) * 150,
+      imagesRatio: 0.5
+    };
+
+    new hoverEffect({
+      parent: document.querySelector("#calendar"),
+      image2: calendar,
+      ...design
+    });
+    new hoverEffect({
+      parent: document.querySelector("#videoapp"),
+      image2: movie_app,
+      ...design
+    });
+    new hoverEffect({
+      parent: document.querySelector("#pacman"),
+      image2: pac_man,
+      ...design
+    });
+    new hoverEffect({
+      parent: document.querySelector("#checkers"),
+      image2: checker,
+      ...design,
+      imagesRatio: 0.37
+    });
+    new hoverEffect({
+      parent: document.querySelector("#chess"),
+      image2: chess,
+      ...design,
+      imagesRatio: 0.37
+    });
+    new hoverEffect({
+      parent: document.querySelector("#noteapp"),
+      image2: note_app,
+      ...design,
+      imagesRatio: 0.3
+    });
+    new hoverEffect({
+      parent: document.querySelector("#tetris"),
+      image2: tetris,
+      ...design
+    });
+    new hoverEffect({
+      parent: document.querySelector("#battleship"),
+      image2: battleship,
+      ...design
+    });
+    new hoverEffect({
+      parent: document.querySelector("#game"),
+      image2: game,
+      ...design
+    });
+  }, []);
 
   const Zeroscheama = React.useCallback(
     (node) => {
@@ -148,44 +220,60 @@ const Projects = () => {
     [scheamaFour]
   );
 
+  const scrollToProjects = React.useMemo(
+    () => state.scrollToProjects,
+    [state.scrollToProjects]
+  );
+
+  React.useEffect(() => {
+    if (scrollToProjects) {
+      window.scrollTo(0, workLocation.current.offsetTop);
+      document.body.style.overflow = "unset";
+      dispatch({ type: "SCROLL_ON", payload: false });
+    }
+  }, [scrollToProjects, dispatch]);
+
   return (
-    <div ref={workLocation}>
-      <DisplaySchemaContent
-        play={workZero}
-        Ref={Zeroscheama}
-        index={1}
-        data={work[0]}
-        mousePanel={mousePanel}
-      />
-      <DisplaySchemaContent
-        play={workOne}
-        Ref={Onescheama}
-        index={2}
-        data={work[1]}
-        mousePanel={mousePanel}
-      />
-      <DisplaySchemaContent
-        play={workTwo}
-        Ref={Twoschema}
-        index={3}
-        data={work[2]}
-        mousePanel={mousePanel}
-      />
-      <DisplaySchemaContent
-        play={workThree}
-        Ref={Threeschema}
-        index={4}
-        data={work[3]}
-        mousePanel={mousePanel}
-      />
-      <DisplaySchemaContent
-        play={workFour}
-        Ref={Fourscheama}
-        index={5}
-        data={work[4]}
-        mousePanel={mousePanel}
-      />
-    </div>
+    <Fragment>
+      <div ref={workLocation}>
+        <DisplaySchemaContent
+          play={workZero}
+          Ref={Zeroscheama}
+          index={1}
+          data={work[0]}
+          mousePanel={mousePanel}
+        />
+
+        <DisplaySchemaContent
+          play={workOne}
+          Ref={Onescheama}
+          index={2}
+          data={work[1]}
+          mousePanel={mousePanel}
+        />
+        <DisplaySchemaContent
+          play={workTwo}
+          Ref={Twoschema}
+          index={3}
+          data={work[2]}
+          mousePanel={mousePanel}
+        />
+        <DisplaySchemaContent
+          play={workThree}
+          Ref={Threeschema}
+          index={4}
+          data={work[3]}
+          mousePanel={mousePanel}
+        />
+        <DisplaySchemaContent
+          play={workFour}
+          Ref={Fourscheama}
+          index={5}
+          data={work[4]}
+          mousePanel={mousePanel}
+        />
+      </div>
+    </Fragment>
   );
 };
 
@@ -195,40 +283,53 @@ const DisplaySchemaContent = memo((props) => {
   const { play, Ref, index, data, mousePanel } = props;
   const { Entered, handleMouseEnter, handleMouseOut } = mousePanel;
 
+  const fixId = (name) =>
+    name
+      .split("")
+      .filter((e) => e.trim().length)
+      .join("");
+
   return (
     <div key={index} ref={Ref}>
       {data.map((el, i) => (
-        <Section key={i}>
-          <DivContainer>
-            <HeaderSpacer>
-              <Li hidetext={false.toString()}>
-                <SpanFlex className={Entered === el.name ? "rotate" : ""}>
-                  <a
-                    href={el.link}
-                    onMouseEnter={() => handleMouseEnter(el.name)}
-                    onMouseLeave={handleMouseOut}
-                  >
-                    <Text name={el.name} entered={Entered} play={play} />
-                  </a>
-                </SpanFlex>
-              </Li>
-              <BannerContainer
-                animate={play}
-                initial="hidden"
-                variants={technologyVariant}
-              >
-                <BannerRowCenter title={el.tech} speed={2} type={true} />
-              </BannerContainer>
-            </HeaderSpacer>
-          </DivContainer>
-        </Section>
+        <Fragment key={i}>
+          <Section>
+            <DivContainer>
+              <HeaderSpacer>
+                <Li
+                  hidetext={false.toString()}
+                  id={fixId(el.name) === "2048" ? "game" : fixId(el.name)}
+                >
+                  <SpanFlex className={Entered === el.name ? "rotate" : ""}>
+                    <a
+                      href={el.link}
+                      onMouseEnter={() => handleMouseEnter(el.name)}
+                      onMouseLeave={() => handleMouseOut()}
+                    >
+                      <Text name={el.name} entered={Entered} play={play} />
+                    </a>
+                  </SpanFlex>
+                </Li>
+                <BannerContainer
+                  animate={play}
+                  initial="hidden"
+                  variants={technologyVariant}
+                >
+                  <BannerRowCenter title={el.tech} speed={2} type={true} />
+                </BannerContainer>
+              </HeaderSpacer>
+            </DivContainer>
+          </Section>
+        </Fragment>
       ))}
     </div>
   );
 });
 
 const Text = memo(({ name, entered, play }) => {
-  return [...name].map((text, i) => {
+  const test = React.useMemo(() => [...name], [name]);
+
+  return test.map((text, i) => {
     return (
       <FlexDiv
         key={i}
@@ -240,7 +341,6 @@ const Text = memo(({ name, entered, play }) => {
         <Span
           className={entered === name ? "rotate" : ""}
           changecolor={true.toString()}
-          id={i}
         >
           {text}
         </Span>

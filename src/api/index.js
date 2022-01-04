@@ -30,9 +30,9 @@ export const index = [
     name: "note app"
   },
   {
-    tech: "react  styled-components",
-    link: "https://github.com/luckmer/CandyGame",
-    name: "candy"
+    tech: "react styled-components ts battleship-game",
+    link: "https://github.com/luckmer/BATTLESHIPS",
+    name: "battle ship"
   },
   {
     tech: "webpack  html5  css3  images  ts  dist",

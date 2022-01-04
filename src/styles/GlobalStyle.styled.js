@@ -22,6 +22,32 @@ body{
 }
 
 
+#calendar,  #game,  #videoapp,#battleship, #pacman, #checkers, #chess, #noteapp , #candy , #tetris ,  #blog  {
+  width: 110vmin !important;
+  height: 50vmin !important;
+
+}
+
+#calendar canvas, #battleship canvas , #game canvas, #videoapp canvas, #pacman canvas,
+ #checkers canvas, #chess canvas, #noteapp canvas, #candy canvas, #tetris canvas,  #blog canvas {
+  border-radius:2vmin;
+  position:absolute;
+  
+  z-index:-1;
+
+  @media screen and (min-width : 1000px){
+    left:3vmin;
+  }
+
+  @media screen and (max-width : 1000px){
+    left:0;
+  }
+
+
+}
+
+
+
 ::selection {
   color: #fff;
   background: #ede6e0;

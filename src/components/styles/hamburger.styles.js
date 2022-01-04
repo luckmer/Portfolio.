@@ -107,6 +107,8 @@ export const Span = styled.span`
       ? props.theme.darkThemeColor
       : props.theme.darkThemeBackground};
 
+  mix-blend-mode: different;
+
   text-transform: uppercase;
   font-family: "Lausanne-300", Arial, Helvetica, sans-serif;
   transition: 300ms linear all;
