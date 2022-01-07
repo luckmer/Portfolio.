@@ -47,9 +47,7 @@ const AnimatedLetters = ({ title, speed }) => {
 
   return (
     <Header speed={speed}>
-      {[...title].map((letter, i) => (
-        <p key={i}>{letter}</p>
-      ))}
+      <p>{title}</p>
     </Header>
   );
 };
