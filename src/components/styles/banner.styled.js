@@ -31,9 +31,9 @@ export const LetterContainer = styled.span`
   padding: 0 10vw;
 
   p {
+    white-space: nowrap;
     -webkit-transition: color 500ms linear !important;
     -ms-transition: color 500ms linear !important;
-    transition: color 500ms linear !important;
     font-size: min(28vmin, 28vmin);
     font-weight: bold;
     color: ${(props) => props.theme.color} !important;
@@ -51,16 +51,18 @@ export const BrandSpan = styled(LetterContainer)`
 
 export const LettersSpan = styled(LetterContainer)`
   animation: ${rotate} 12s linear infinite;
+  display: inline-flex;
 `;
 
 export const Speed = styled(LetterContainer)`
-  animation: ${rotate} 8s linear infinite;
   transition: all 1000ms ease !important;
+  animation: ${rotate} 8s linear infinite;
 
   p {
     -webkit-text-fill-color: ${(props) => props.theme.darkThemeBackground};
     -webkit-text-stroke: 1px ${(props) => props.theme.color};
     font-size: 12vmin;
+    display: inline-flex;
   }
 `;
 
@@ -115,14 +117,15 @@ transition: all 500ms ease !important;
 `;
 
 export const Canvas = styled.canvas`
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
   z-index: 998;
-  width:100%:
-  height:100%;
+
   &.mobile {
     z-index: 999;
   }

@@ -40,9 +40,8 @@ body{
   }
 
   @media screen and (max-width : 1000px){
-    left:0;
+    display:none;
   }
-
 
 }
 

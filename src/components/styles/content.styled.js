@@ -87,8 +87,8 @@ export const ContentContainer = styled.div`
 
 export const AnimationPanel = styled.div`
   width: 100%;
-  border-top: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
-  border-bottom: ${(props) => `1px solid ${props.theme.darkThemeColor}`};
+  border-top: ${(props) => `0.2vmin solid ${props.theme.darkThemeColor}`};
+  border-bottom: ${(props) => `0.2vmin solid ${props.theme.darkThemeColor}`};
   @media screen and (min-width: 700px) {
     margin: 20vmin 0;
   }

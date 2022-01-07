@@ -43,6 +43,8 @@ export const ContactPanel = styled.div`
     list-style: none;
     text-decoration: none;
   }
+
+  width: 100%;
 `;
 
 export const H1 = styled(motion.h1)`

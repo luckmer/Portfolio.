@@ -17,11 +17,11 @@ import { index } from "../../api";
 
 //styles
 import {
-  Span,
-  SpanFlex,
-  Li,
   BannerContainer,
-  FlexDiv
+  SpanFlex,
+  FlexDiv,
+  Span,
+  Li
 } from "../styles/hamburger.styles";
 import { Section, DivContainer, HeaderSpacer } from "../styles/projects.style";
 
