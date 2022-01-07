@@ -169,8 +169,9 @@ const Content = () => {
           initial="hidden"
           variants={TextVariant}
         >
-          over time I began to create more advanced projects such as checkers,
-          chess each time trying to make the level of difficulty was higher
+          Over time I began creating more and more advanced projects like
+          checkers,chess or this website. Each time increasing the difficulty
+          bar ever higher, just to challenge myself.
         </motion.p>
       </MainDivHeader>
       <AnimationPanel>
