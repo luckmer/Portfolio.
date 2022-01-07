@@ -37,6 +37,7 @@ const Banner = () => {
 
   useEffect(() => {
     let renderingElement = ref.current;
+    if (!renderingElement) return;
 
     let drawingCtx = renderingElement.getContext("2d");
     let renderingCtx = renderingElement.getContext("2d");
@@ -90,6 +91,7 @@ const Banner = () => {
         onMouseEnter={() => handleHoverCursor()}
         onMouseLeave={handleOutMouse}
       />
+
       <ScrollDown ref={setRefs}>
         {[..."MORE"].map((el, i) => (
           <BannerP
