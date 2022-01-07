@@ -98,14 +98,14 @@ export default React.memo(Contact);
 
 const HeaderDiv = styled.div`
   display: flex;
-  padding: 0 2vmin;
+  margin: 0 2vmin;
   position: relative;
 `;
 
 const ContactSlicer = styled.div`
   display: flex;
   overflow: hidden;
-
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
